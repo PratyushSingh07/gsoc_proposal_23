@@ -28,25 +28,33 @@ Mentors:
 - [Contents](#contents)
 - [1. Project Idea](#1-project-idea)
 - [2. Implementation of the idea ](#2-implementation-of-the-idea)   
-    - [2.1 Support for customer support/chat via RocketChat](#21-support-for-customer-supportchat-via-rocketchat)<!--  TODO -->
-    - [2.2 Migration from Dagger to Hilt](#22-migration-from-dagger-to-hilt)<!--  TODO -->
-    - [2.3 Migration from MVP to MVVM](#23-migration-from-mvp-to-mvvm) 
-        - [2.3.1 Migrating an activity](#231-migrating-an-activity) 
-        - [2.3.2 Migrating a fragment](#232-migrating-a-fragment)
-    - [2.4 Basic Integration of Navigation Graph](#24-basic-integration-of-navigation-graph)<!--  TODO -->
-    - [2.5 Basic Integration of Coroutines](#25-basic-integration-of-coroutines)<!--  TODO -->
-    - [2.7 Unit Tests](#27-unit-test)<!--  TODO -->
-    - [2.8 Improving Github workflows](#28-improving-github-workflows)
-    - [2.9 My Ideas for the app](#29-my-ideas-for-the-app)
-        - [2.9.1 Migrating from Butter Knife to View Binding](#291-migrating-from-butter-knife-to-view-binding)
-        - [2.9.2 Adding option to change conection settings from login page](#292-adding-option-to-change-connection-setting-from-login-page)
+    - [2.1 Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm) 
+        - [2.1.1 Migrating an activity](#211-migrating-an-activity) 
+        - [2.1.2 Migrating a fragment](#212-migrating-a-fragment)
+    - [2.2 Basic Integration of Navigation Graph](#22-basic-integration-of-navigation-graph)
+    - [2.3 Improving Github workflows](#23-improving-github-workflows)
+    - [2.4 My Ideas for the app](#24-my-ideas-for-the-app)
+        - [2.4.1 Migrating from Butter Knife to View Binding](#241-migrating-from-butter-knife-to-view-binding)
+        - [2.4.2 Adding option to change connection settings from login page](#242-adding-option-to-change-connection-setting-from-login-page)
 - [3. Week Wise Breakdown](#3-week-wise-breakdown)
     - [3.1 Community Bonding Period (4 May - 28 May)](#31-community-bonding-period-4-may---28-may)
         - [Week 1](#week-1)
         - [Week 2](#week-2) 
         - [Week 3](#week-3)
-    - [3.2 Phase 1](#phase-1)<!--  TODO along with the breakdown image -->
-    - [3.3 Phase 2](#phase-2)<!--  TODO along with the breakdown image -->
+    - [3.2 Phase 1 (29 May - 9 July)](#32-phase-1-29-may---9-july)<!--  TODO along with the breakdown image -->
+        - [Week 4](#week-4)
+        - [Week 5](#week-5)
+        - [Week 6](#week-6)
+        - [Week 7](#week-7)
+        - [Week 8 and rest of phase 1](#week-8-and-rest-of-phase-1)
+    - [3.3 Phase 2 (14 July - 21 Aug)](#33-phase-2-14-july---21-aug)<!--  TODO along with the breakdown image -->
+        - [Week 10](#week-10)
+        - [Week 11](#week-11)
+        - [Week 12](#week-12)
+        - [Week 13](#week-13)
+        - [Week 14](#week-14)
+        - [Week 15 and the rest of phase 2 ](#week-15-and-rest-of-phase-2)
+    - [3.4 Post phase 2 (After Aug 28)](#34-post-phase-2-after-aug-28)
 - [4. Why Am I The Right Person](#4-why-am-i-the-right-person)
 - [5. Current Area of Study](#5-current-area-of-study)
 - [6. Contact Information](#6-contact-information)
@@ -56,12 +64,11 @@ Mentors:
 - [10. Other Open Source Contributions](#10-other-open-source-contributions)
 - [11. Experience with Angular/Java/Spring/Hibernate/MySQL/Android](#11-experience-with-angularjavaspringhibernatemysqlandroid)
 - [12. Other Commitments](#12-other-commitments)
-- [13. Deployment of Apache fineract platform](#13-deployment-of-apache-fineract-platform) <!--  TODO -->
-- [14. Contributions To Mifos](#14-contributions-to-mifos)
-- [15. What motivates me to work with mifos](#15-what-motivates-to-work-with-mifos-for-gsoc)
-- [16. Previous Participation in GSoc](#16-previous-participation-in-gsoc)
-- [17. Application to multiple Orgs](#17-application-to-multiple-orgs)
-<br><br><br>
+- [13. Contributions To Mifos](#13-contributions-to-mifos)
+- [14. What motivates me to work with mifos](#14-what-motivates-to-work-with-mifos-for-gsoc)
+- [15. Previous Participation in GSoc](#15-previous-participation-in-gsoc)
+- [16. Application to multiple Orgs](#16-application-to-multiple-orgs)
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 # 1. Project Idea
@@ -85,7 +92,7 @@ Abstract
 <br>
 
 # 2. Implementation of the idea
-## 2.1 Support for customer support/chat via RocketChat
+<!-- ## 2.1 Support for customer support/chat via RocketChat
 - Customer support enhances users experience with realtime conversations.App users sometimes experience issues when using the app itself. In-app chat will enable us to support them right away and provide a native user and customer experience.This will help us with product stickiness and also increase customers service productivity .
 
 <br>
@@ -93,11 +100,11 @@ Abstract
 ## 2.2 Migration from Dagger to Hilt
 - Hilt makes working with AndroidX a lot easier by removing that boilerplate code. What’s even better is that you don’t even need to inject the Factory in the Android framework class, you call it as if Hilt wasn’t there. With @ViewModelInject, Hilt generates the right ViewModelProvider.Factory for you that @AndroidEntryPoint activities and fragments can use directly.
 
-<br>
+<br> -->
 
-## 2.3 Migration from MVP to MVVM
+## 2.1 Migration from MVP to MVVM
 The MVVM architecture is designed to store and manage UI-related data in a lifecycle conscious way. Configuration changes such as screen rotations are handled properly by ViewModels.It separates the responsibilities of the user interface from the business logic, which makes the code easier to maintain and test.Because the ViewModel is decoupled from the View, it can be unit tested without the need for a graphical user interface (GUI). This makes testing faster and more reliable.MVVM leverages data binding to establish a connection between the View and ViewModel. This means that changes made to the ViewModel are automatically reflected in the View, and vice versa. This reduces the amount of boilerplate code needed to keep the UI up-to-date.Because the ViewModel contains the business logic, changes to the UI can be made without affecting the underlying data or business logic. This makes it easier to maintain and extend the code over time.
-### 2.3.1 Migrating an Activity 
+### 2.1.1 Migrating an Activity 
 - In the original code, all the business logic was in the SplashActivity class. This violates the separation of concerns principle, which states that each class should have a single responsibility. In the MVVM architecture, the ViewModel is responsible for holding the data and the business logic, while the View (in this case, the SplashActivity) is responsible for displaying the data and handling user interactions.
 
 - So, to follow this principle, we create a separate SplashViewModel class that holds the business logic, and move the logic from the SplashActivity to the SplashViewModel. This way, the SplashActivity is only responsible for displaying the data returned by the SplashViewModel, and the SplashViewModel is responsible for deciding what data to return and how to generate it.
@@ -171,7 +178,7 @@ class SplashActivity : BaseActivity() {
     }
 }
 ```
-### 2.3.2 Migrating a fragment
+### 2.1.2 Migrating a fragment
 - I have converted the LocationsFragment from MVP to MVVM because the MVVM pattern separates the business logic from the view, making the code more modular and easier to test.In the MVP pattern, the presenter is responsible for handling the business logic and updating the view, which can lead to tight coupling between the view and the presenter. This can make the code harder to maintain and test.
 
 - In the MVVM pattern, the view model is responsible for handling the business logic, while the view is responsible for displaying the data. This separation of concerns makes the code more modular and easier to test.To convert the LocationsFragment from MVP to MVVM, I removed any reference to the presenter and created a view model to handle the business logic.
@@ -258,10 +265,11 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
     }
 }
 ```
-## 2.4 Basic Integration of Navigation Graph 
+## 2.2 Basic Integration of Navigation Graph 
 - The Navigation Component in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
 - Once the Navigation Graph is created, the next step is to integrate it into the app's code. This involves using the Navigation Component APIs to load and navigate to the appropriate destination based on user input.
-- As an example , I have taken up SettingsFragment and UpdatePasswordFragment . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost. The appropriate changes in `activity_settings.xml` is : 
+- As an example , I have taken up SettingsFragment and UpdatePasswordFragment . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost. <br><br><br>
+- The appropriate changes in `activity_settings.xml` is : 
 ```xml
  <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
@@ -292,14 +300,14 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 - So now you will have just one Activity and on top of that you will have two fragments that can be added in another navigation graph.
 <br>
 
-## 2.5 Basic integration of coroutines
+<!-- ## 2.5 Basic integration of coroutines
 
 <br>
 
 ## 2.7 Unit Test 
-<br>
+<br> -->
 
-## 2.8 Improving Github Workflows 
+## 2.3 Improving Github Workflows 
 - Currently the workflows do not have any jobs that runs the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
 - It can provide a faster feedback loop for developers and can help them iterate and develop features more quickly.By automating testing as part of your Github workflow, you can reduce the need for manual testing. This can save time and resources and allow developers to focus on other tasks.
 - Job for Unit test would be :
@@ -349,14 +357,13 @@ Job for UI tests would be :
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2.2
-
 ```
 - **unitTest job** : This job is responsible for running unit tests on the application's codebase. Unit tests are automated tests that check individual units or modules of an application in isolation to ensure that they are functioning correctly. The unitTest job runs the unit tests using the Gradle wrapper and a testing framework such as JUnit or Mockito.
 - **uiTest job** :  This job is responsible for running UI tests on the application's user interface. UI tests are automated tests that simulate user interactions with the application to ensure that its UI is functioning correctly. The uiTest job runs the UI tests using a testing tool such as Espresso 
 
-## 2.9 My Ideas for the app
+## 2.4 My Ideas for the app
 There are certain features that are not currently present in the ideas list but in my opinion would look good and also be in accordance with the new android standards.
-### 2.9.1 Migrating from Butter Knife to View Binding
+### 2.4.1 Migrating from Butter Knife to View Binding
 - As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in your application. However, Butterknife still had its own issues such as null safety and speed. Now introduce View Binding: a low code, null safe, and fast binding tool! View Binding is a 1st party tool built by the Google Android Development team which helps reference and easily manage views within an app
 - Butterknife is a 3rd party library made to address the issue of using findViewById(...) functions to reference and interact with views. It helped reduce boilerplate code but also had to set up a @Bind annotation every time you wanted to interact with a view. Then View Binding was introduced starting at Gradle version 3.6.This single binding variable allows us to access every view, set up event listeners, and any other functionality we'd do with Butterknife.
 - On top of Butterknife being deprecated, another reason to switch is because View Binding is compile time safe and builds fast. As for findViewById(...), this way of referencing views will lead to so much unnecessary code that could be replaced with a View Binding variable.
@@ -510,7 +517,7 @@ class LoginActivity : BaseActivity(), LoginView {
 }
 ```
 Similar approach could be applied on the fragments as well .
-### 2.9.2 Adding Option to Change Connection setting from login page
+### 2.4.2 Adding Option to Change Connection setting from login page
 - Currently the when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system.
 - To overcome this there should be a support in the LoginActivity to change the **Connection Settings** that would allow the user to change the endpoint without having to uninstall the app. This would save the users time and would be a good feature to have.
 - The implementation idea can be derived from **Android Client** that presently has this feature and the same can be replicated over in mifos mobile
@@ -537,14 +544,87 @@ Similar approach could be applied on the fragments as well .
 - Discuss the changes that need to take place in the frontend to accomodate for the breaking changes
 
 
-## Phase 1
+## 3.2 Phase 1 (29 May - 9 July)
 
-## Phase 2
+### Week 4
+
+- I will start off gradually with the migration from MVP to MVVM architectural style
+- The order that I will follow is : 
+    - Splash Activity
+    - Login Activity
+    - Registeration Fragment
+    - PassCode Activity
+    - HomeOld Fragment 
+    - Home Fragment and so on
+- This order is somewhat sequential and will be one of the first steps to be undertaken
+- I would also take inputs from my mentors and if the need arises, change the order of the migration 
+
+### Week 5
+
+- I would dedicate this week for the implementation of the Navigation graph
+- I would start off by grouping the fragments that are connected in a sequential flow of motion and map out a graph for the same in the xml
+- This would require the addition of FragmentContainerView in certain activities which will allow further FragmentTransaction operations on the FragmentContainerView and providing a consistent timing for lifecycle events.
+
+### Week 6
+
+- This week would be reserved for the migration from dagger to hilt & also for the integration of coroutines in the project
+
+
+### Week 7
+
+- integration of payment hubs
+
+### Week 8 and Rest of Phase 1
+
+- *Buffer* for any pending tasks
+- Prepare a report for evaluation
+- Discuss brief plan for Phase 2 with the mentors
+
+
+## 3.3 Phase 2 (14 July - 21 Aug)
+
+### Week 10 
+
+- Rocket chat will provide users with the support and facility of fast solutions to their queries. Rocket chat will provide users to communicate securely in real-time.
+ <!-- refer rocket chat lib here https://gist.github.com/ShivangiSingh17/67b6041387c1e281caa7df23347f549e -->
+- Shivangi singh had already updated the callbacks in the library and had further added lifecycle to decline requests . The library can be found [here](https://github.com/ShivangiSingh17/mifos-Rocket.Chat)
+- Now all is left to be done is the integration into the project and I will integrate this once I get the updated *APIs* during the GSoC period
+
+
+### Week 11 
+
+- replace existing api layer 
+
+### Week 12 
+
+- Write unit tests for data layer and UI layer(mockito)
+
+### Week 13 
+
+- This week will be dedicated to performing the UI tests using espresso whose dependencies are already present in the gradle
+- We will have decent amount of changes to the UI uptill here and hence tests that cover all the screens must be put in place
+- This will ensure that the views are displayed correctly and look the way they're supposed to.Besides it will ensure that the interactions are handled correctly.
+
+### Week 14 
+
+- After writing all the unit tests I will add appropriate jobs in the existing workflow to run these tests
+- Running tests regularly and automating the testing process can save a lot of time and prevent issues from arising in the codebase
+
+### Week 15 and Rest of Phase 2
+
+- If the mentors permit then I would like to implement my own ideas. Considering the ideas aren't that cumbersome it will work out even if its accomplished at the end of the project
+- *Buffer* to complete any remaining tasks
+- Prepare report for evaluation
+
+## 3.4 Post Phase 2 (After Aug 28)
+- Discuss the project's outcome with my mentors and devise a plan of action for future contributions
+- Engage with members of the community to solicit feedback on project implementation and to identify possible add-on features
+
 
 # 4. Why am I the right person ?
 I have been doing Android Application Development for more than one year now. I have gained
 proficiency in it by doing multiple Internships, several Open Source Contributions as well as
-Hackathons.I am quite conversant with Android Architectural Components, MVVM, activities, fragments, support libraries, version control, Networking Services, Firebase, UI Development, Jetpack Compose etc. <br>
+Hackathons.I am quite conversant with Android Architectural Components, MVVM, activities, fragments, support libraries, version control, Networking Services, Firebase, UI Development, Jetpack Compose etc.<br>
 <!-- Below is a brief overview of my work experience : 
 <ul> 
 <b>1. Open Source Contributor,Dare2Change(SLoP 2022): </b>
@@ -559,17 +639,16 @@ d. Revamped the complete UI of the application and introduced a dark mode theme.
 e. My contributions for Dare2Change : <a href="https://github.com/coder2699/Dare2Change/pulls?q=is%3Apr+author%3A%40me+">Check Here</a><br>
 </ul>
 </ul>  -->
-<br>
+<!-- <br> -->
 
 # 5. Current area of study
-I am pre final year student pursuing **Information Science and Engineering** at Dayananda Sagar College of Engineering.<br>
+I am pre final year student pursuing **Information Science and Engineering** at Dayananda Sagar College of Engineering.
 <!-- Over the course my area of study have included :
 - Learning the fundamentals of Java, Python and C++ along with Data Structures and Computer Architecture
 - I have learnt to collect,store and analyze data using tools like SQL and Python
 - My studies have focused on Information Retrieval systems such as Search Engines,Cross Language Information Retrieval and digital libraries
 - Learning about the fundamentals of ML that included supervised and unsupervised learning,neureal networks and deep learning
 - I have also had the privilege to learn about distributed systems, cloud computing, and virtualization technologies. -->
-<br>
 
 # 6. Contact Information 
 **Name**: Pratyush Singh
@@ -585,14 +664,13 @@ I am pre final year student pursuing **Information Science and Engineering** at 
 **Mobile Number**: +91 9693565684
 
 **Time Zone**:  Indian Standard Time (GMT+5:30)
-
-<br><br>
+<br>
 
 # 7. Career Goals
-As an android developer my first and foremost goal is to master the Android SDK,Multithreading and other related technologies and create a portfolio of projects that would include personal projects, open source contributions, or projects done as part of your studies or work.
+As an android developer my first and foremost goal is to master the Android SDK,Multithreading and other related technologies and create a portfolio of projects that would include personal projects, open source contributions, or projects done as part of my studies or work.
 As I gain more experience , I would want to specialize in UI/UX design along with enterprise app development and seek out for leadership roles. 
 I would sooner or later venture into AOSP and get a grasp of low level android as well and transition into a full stack mobile developer.
-I am self taught like many other developers out there and Open Source Projects have played an integral part in my growth and thus I would give back to this android community by sharing my knowledge and expertise through blog posts, tutorials,speaking engagements and ofcourse by contributing to Open Source Projects 
+I am self taught like many other developers out there and Open Source Projects have played an integral part in my growth and thus I would give back to this android community by sharing my knowledge and expertise through blog posts, tutorials,speaking engagements and ofcourse by contributing to Open Source Projects.
 <br>
 
 # 8. Project (Source Code I have written)
@@ -615,7 +693,7 @@ database
 
 # 9. Gitter Channel 
 Yes, I have visited all of mifos's gitter channel and my id was <a href="(@pratyushsingh07-63388c746da03739849d52a7:gitter.im)">PratyushSingh07</a>
-<br>
+<br><br><br><br><br><br><br>
 
 # 10. Other Open Source Contributions 
 <!-- Add PR as link below and also mention the works if possible -->
@@ -641,12 +719,9 @@ Yes, I do have experience with Android and Java and have built projects centered
 These are going to be an integral part of my 6th semester activities. They are not going to affect my GSOC efforts.  
 I will be able to deliver my commited number of hours per week without much hindrance.
 <!-- I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments. -->
-<br>
+<!-- <br> -->
 
-# 13. Deployment of Apache Fineract platform
-<br>
-
-# 14. Contributions to Mifos 
+# 13. Contributions to Mifos 
 Below are the links to my contributions : 
 <ul>
 1. <a href="https://github.com/openMF/mifos-mobile/pull/1901" >PR #1901: Finger Print Authentication in the Passcode Activity</a>
@@ -671,10 +746,12 @@ Below are the links to my contributions :
 <br>
 11. <a href="https://github.com/openMF/mifos-mobile/pull/1904" >PR #1904: Added Country Code Picker in the Signup form</a>
 <br>
-</ul>
+12. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
 <br>
+</ul>
+<!-- <br>` -->
 
-# 15. What motivates to work with Mifos for GSoC 
+# 14. What motivates to work with Mifos for GSoC 
 Mifos Initiative is making a significant difference in the world by providing financial inclusion to people who would otherwise be excluded from the formal financial system. This mission is truly inspiring, and being a part of it through the Google Summer of Code program is a privilege.
 From a professional point of view mifos has a vibrant community of developers, volunteers, and supporters who are passionate about the mission of the organization. It's motivating to be a part of a community that is so dedicated to making a positive impact on the world.Besides
 Google Summer of Code is a fantastic opportunity for students to gain real-world experience working on open-source projects. Mifos Initiative's participation in this program shows that they are committed to helping the next generation of developers like me succeed and contribute to something that would impact lives of billions around the globe.The work that we as a students do during the Google Summer of Code program can have a lasting impact on the Mifos Initiative and the people it serves. Knowing that the work you do can make a real difference in people's lives is incredibly rewarding.
@@ -682,10 +759,10 @@ Google Summer of Code is a fantastic opportunity for students to gain real-world
 Mifos Initiative's commitment to open-source software is essential for the sustainability of the financial inclusion ecosystem. By making their software freely available, they are enabling other organizations to provide financial services to underserved communities.
 <br>
 
-# 16. Previous Participation in GSoC
+# 15. Previous Participation in GSoC
 No,this is my first participation in Google Summer of Code
 <br>
 
-# 17. Application to multiple orgs
+# 16. Application to multiple orgs
 I will be applying only to Mifos-Mobile for this years' GSoC
 <br>
