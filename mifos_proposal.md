@@ -89,20 +89,21 @@ Abstract
 - Complete Support for customer support/chat via RocketChat
 - Integration with an external payment system (Mojaloop, mPesa) via our payment hub. <!-- how? -->
 - Migrate Dagger to Hilt
-- Migrate from MVP to MVVM-Clean architecture (Not the whole project, maybe 20-30%)
+- Migrate from MVP to MVVM-Clean architecture 
 - The basic integration of the Navigation Graph in the project
 - The basic integration of Coroutines 
 - Continue adding unit tests for Data Layer and UI Layer <!-- how? -->
 - Cover all the screens with UI tests
 - Improve Githhub workflows and add jobs to run Unit and UI tests
-<!-- - Basic integration of Jetpack Compose -->
-
 <br>
 
 # 2. Implementation of the idea
 
 ## 2.1 Migration from MVP to MVVM
-The MVVM architecture is designed to store and manage UI-related data in a lifecycle conscious way. Configuration changes such as screen rotations are handled properly by ViewModels.It separates the responsibilities of the user interface from the business logic, which makes the code easier to maintain and test.Because the ViewModel is decoupled from the View, it can be unit tested without the need for a graphical user interface (GUI). This makes testing faster and more reliable.MVVM leverages data binding to establish a connection between the View and ViewModel. This means that changes made to the ViewModel are automatically reflected in the View, and vice versa. This reduces the amount of boilerplate code needed to keep the UI up-to-date.Because the ViewModel contains the business logic, changes to the UI can be made without affecting the underlying data or business logic. This makes it easier to maintain and extend the code over time.
+- Currently in the MVP architecture the View and Presenter are tightly coupled, which can make it difficult to modify the code or reuse components. However with MVVM, the ViewModel serves as an intermediary between the View and Model, allowing for a looser coupling and greater flexibility
+-  MVP can lead to code that is complex and difficult to maintain, especially when dealing with complex user interfaces. MVVM can simplify the code by separating the business logic from the UI components, making it easier to modify and maintain the codebase
+- In MVP, managing the state of the View can be challenging, especially when dealing with configuration changes such as screen rotation. With MVVM, the ViewModel can maintain the state of the View, making it easier to manage and avoid data loss
+- Furthermore,MVVM architecture can be combined with reactive programming libraries like RxJava, which can make it easier to handle asynchronous data flows and improve the application's performance
 ### 2.1.1 Migrating an Activity 
 - In the original code, all the business logic was in the SplashActivity class. This violates the separation of concerns principle, which states that each class should have a single responsibility. In the MVVM architecture, the ViewModel is responsible for holding the data and the business logic, while the View (in this case, the SplashActivity) is responsible for displaying the data and handling user interactions.
 
@@ -146,7 +147,7 @@ class SplashViewModelFactory(private val passcodePreferencesHelper: PasscodePref
     }
 }
 ```
-<br><br><br><br>
+<br><br><br><br><br>
 
 Refactored code for SplashActivity.kt :
 ```xml
@@ -264,10 +265,12 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
     }
 }
 ```
-## 2.2 Basic Integration of Navigation Graph 
+# 2.2 Basic Integration of Navigation Graph 
+- There aren't any navigation graphs in the project yet hence all navigation logic between different screens and activities are handled manually making the project more complex and error-prone code, which can slow down the app and make it more difficult to maintain.As the app grows in complexity, it can become increasingly difficult to manage the navigation logic manually. This can make it challenging to add new features or modify existing ones, which can limit the app's ability to scale and evolve over time.
+- With navigation graph in place can improve user experience by allowing users to easily navigate between screens and tasks .Besides it provides a simplified and standardized approach to app navigation, making it easier for developers to build and maintain complex apps. It also helps to reduce the amount of code required to handle navigation, which can save development time and effort.
 - The Navigation Component in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
 - Once the Navigation Graph is created, the next step is to integrate it into the app's code. This involves using the Navigation Component APIs to load and navigate to the appropriate destination based on user input.
-- As an example , I have taken up SettingsFragment and UpdatePasswordFragment . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost. <br><br><br>
+- As an example , I have taken up SettingsFragment and UpdatePasswordFragment . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost.
 - The appropriate changes in `activity_settings.xml` is : 
 ```xml
  <androidx.fragment.app.FragmentContainerView
@@ -303,7 +306,7 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 - I will undertake the task of migrating from dagger to hilt 
 - Hilt uses annotation processing to generate code at compile time, which can improve performance compared to Dagger's runtime reflection
 - We will start off with a `@Singleton` component and then later migrate activities and fragments
-- I propose we migrate the Login and Registeration first and then move towards nested fragments and during the migration I'll remove all  `@Component` and `@Subcomponent` interfaces and annotate all modules with `@InstallIn`.
+- I propose we migrate the Login and Registeration first and then move towards inner fragments and during the migration I'll remove all  `@Component` and `@Subcomponent` interfaces and annotate all modules with `@InstallIn`.
 - After the migration, all Application/Activity/Fragment/View classes will be annotated with `@AndroidEntryPoint` and any code instantiating or propagating components shall be removed.
 <br>
 
@@ -325,7 +328,7 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 <!-- 
 # 2.6 Unit tests for data layer and UI layer  -->
 
-## 2.6 Improving Github Workflows 
+# 2.6 Improving Github Workflows 
 - Currently the workflows do not have any jobs that runs the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
 - It can provide a faster feedback loop for developers and can help them iterate and develop features more quickly.By automating testing as part of your Github workflow, you can reduce the need for manual testing. This can save time and resources and allow developers to focus on other tasks.
 - Job for Unit test would be :
@@ -379,11 +382,12 @@ Job for UI tests would be :
 - **unitTest job** : This job is responsible for running unit tests on the application's codebase. Unit tests are automated tests that check individual units or modules of an application in isolation to ensure that they are functioning correctly. The unitTest job runs the unit tests using the Gradle wrapper and a testing framework such as JUnit or Mockito.
 - **uiTest job** :  This job is responsible for running UI tests on the application's user interface. UI tests are automated tests that simulate user interactions with the application to ensure that its UI is functioning correctly. The uiTest job runs the UI tests using a testing tool such as Espresso 
 
-<br><br>
+- I have modified the master_dev_ci.yml and the modified yaml file can be found [here](#https://gist.github.com/PratyushSingh07/ed9285c463af907bb20ed7b5c50c49f8)
+<br>
 
-## 2.7 My Ideas for the app
+# 2.7 My Ideas for the app
 There are certain features that are not currently present in the ideas list but in my opinion would look good and also be in accordance with the new android standards.
-### 2.7.1 Migrating from Butter Knife to View Binding
+## 2.7.1 Migrating from Butter Knife to View Binding
 - As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in your application. However, Butterknife still had its own issues such as null safety and speed. Now introduce View Binding: a low code, null safe, and fast binding tool! View Binding is a 1st party tool built by the Google Android Development team which helps reference and easily manage views within an app
 - Butterknife is a 3rd party library made to address the issue of using findViewById(...) functions to reference and interact with views. It helped reduce boilerplate code but also had to set up a @Bind annotation every time you wanted to interact with a view. Then View Binding was introduced starting at Gradle version 3.6.This single binding variable allows us to access every view, set up event listeners, and any other functionality we'd do with Butterknife.
 - On top of Butterknife being deprecated, another reason to switch is because View Binding is compile time safe and builds fast. As for findViewById(...), this way of referencing views will lead to so much unnecessary code that could be replaced with a View Binding variable.
@@ -398,14 +402,16 @@ There are certain features that are not currently present in the ideas list but 
 
 - For demonstration , I have migrated the LoginActivity from **Butter Knife** to **View Binding**. The modified file can be found [here](https://gist.github.com/PratyushSingh07/9c005a4c8ac8ff127550912f658a53d0)
 
-- Similar approach could be applied on the fragments as well .
-### 2.7.2 Adding Option to Change Connection setting from login page
+- With a slightly different implementation we can use it in the fragments as well . I have made changes in RegistrationFragment whose modified code can be found [here](https://gist.github.com/PratyushSingh07/b752404c4dfbe929fa4c25999e598f52)
+<br><br><br><br>
+
+## 2.7.2 Adding Option to Change Connection setting from login page
 - Currently the when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system
 - To overcome this there should be a support in the LoginActivity to change the **Connection Settings** that would allow the user to change the endpoint without having to uninstall the app. This would save the users time and would be a good feature to have
 - The implementation idea can be derived from **Android Client** that presently has this feature and the same can be replicated over in mifos mobile. [Here](https://user-images.githubusercontent.com/90026952/224733546-0cc1c646-fa88-4fa6-9de3-571737fb050d.mp4) is a video for your reference
-<br><br><br><br>
+<br>
 
-### 2.7.3 Introduce animations for smooth transition
+## 2.7.3 Introduce animations for smooth transition
 - Currently there are no animations in place when we switch between screens
 - For instance , animations can be introduced while entering a new screen and when leaving a screen 
 - I have added some animations whose xml can be found [here](https://gist.github.com/PratyushSingh07/f5dde80701be455e171c82e34db745e0)
@@ -415,14 +421,13 @@ There are certain features that are not currently present in the ideas list but 
 Below are the links to my contributions : 
 ### Merged Pull Requests 
 <ul>
-1.<a href="https://github.com/openMF/mifos-mobile/pull/1926" >PR #1926: Modified Error message in case of wrong endpoint</a>
+1. <a href="https://github.com/openMF/mifos-mobile/pull/1926" >PR #1926: Modified Error message in case of wrong endpoint</a>
 <br>
 2. <a href="https://github.com/openMF/mifos-mobile/pull/1927" >PR #1927: Fixes the behaviour of filters throught the app</a>
 <br>
 3. <a href="https://github.com/openMF/mifos-mobile/pull/1930" >PR #1930: Fixes 'Change Passcode' in Settings</a>
-<br>
+<!-- <br> -->
 </ul>
-<br>
 
 ### Open Pull Requests
 <ul>
@@ -445,6 +450,7 @@ Below are the links to my contributions :
 9. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
 <br>
 </ul>
+<br><br><br><br><br><br>
 
 # 4. Week Wise Breakdown
 
@@ -480,8 +486,6 @@ Below are the links to my contributions :
     - Home Fragment and so on
 - This order is somewhat sequential and will be one of the first steps to be undertaken
 - I would also take inputs from my mentors and if the need arises, change the order of the migration 
-
-<br>
 
 ### Week 5
 
@@ -575,7 +579,7 @@ I am pre final year student pursuing **Information Science and Engineering** at 
 - My studies have focused on Information Retrieval systems such as Search Engines,Cross Language Information Retrieval and digital libraries
 - Learning about the fundamentals of ML that included supervised and unsupervised learning,neureal networks and deep learning
 - I have also had the privilege to learn about distributed systems, cloud computing, and virtualization technologies. -->
-<br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br> -->
 
 # 7. Contact Information 
 **Name**: Pratyush Singh
@@ -598,7 +602,7 @@ As an android developer my first and foremost goal is to master the Android SDK,
 As I gain more experience , I would want to specialize in UI/UX design along with enterprise app development and seek out for leadership roles. 
 I would sooner or later venture into AOSP and get a grasp of low level android as well and transition into a full stack mobile developer.
 I am self taught like many other developers out there and Open Source Projects have played an integral part in my growth and thus I would give back to this android community by sharing my knowledge and expertise through blog posts, tutorials,speaking engagements and ofcourse by contributing to Open Source Projects.
-<br>
+<!-- <br><br><br> -->
 
 # 9. Project (Source Code I have written)
 <b>1. Cyclofit : </b><a href="https://github.com/PratyushSingh07/cyclofit"><i>Source Code</i></a><br>
@@ -620,7 +624,7 @@ database
 
 # 10. Gitter Channel 
 Yes, I have visited all of mifos's gitter channel and my id was <a href="(@pratyushsingh07-63388c746da03739849d52a7:gitter.im)">PratyushSingh07</a>
-<br>
+<br><br><br><br><br><br><br>
 
 # 11. Other Open Source Contributions 
 <!-- Add PR as link below and also mention the works if possible -->
