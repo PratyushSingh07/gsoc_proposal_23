@@ -13,7 +13,7 @@ Organization: [Mifos Initiative](https://mifos.org/)
 
 Project Name: [Mifos Mobile 6.0 - Mobile Banking App](https://mifosforge.jira.com/wiki/spaces/RES/pages/3296690177/Google+Summer+of+Code+2023+Ideas#Mifos-Mobile-6.0---Mobile-Banking-App)
 
-Candidate Name: Pratyush Singh
+Candidate Name: [Pratyush Singh](https://github.com/PratyushSingh07)
 
 Expected Project Size: 350 hours
 
@@ -27,38 +27,26 @@ Mentors:
 # Contents     
 - [Contents](#contents)
 - [1. Project Idea](#1-project-idea)
-- [2. Implementation of the idea ](#2-implementation-of-the-idea)   
-    - [2.1 Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm) 
+- [2. Implementation Details ](#2-implementation-details)   
+    - [2.1 Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm)  
         - [2.1.1 Migrating an activity](#211-migrating-an-activity) 
         - [2.1.2 Migrating a fragment](#212-migrating-a-fragment)
     - [2.2 Basic Integration of Navigation Graph](#22-basic-integration-of-navigation-graph)
     - [2.3 Migration from Dagger to Hilt](#23-migration-from-dagger-to-hilt)
     - [2.4 Basic integration of coroutines](#24-basic-integration-of-coroutines)
     - [2.5 Integration of rocket chat for customer support](#25-customer-support-via-rocket-chat)
-    - [2.6 Improving Github workflows](#26-improving-github-workflows)
-    - [2.7 My Ideas for the app](#27-my-ideas-for-the-app)
-        - [2.7.1 Migrating from Butter Knife to View Binding](#271-migrating-from-butter-knife-to-view-binding)
-        - [2.7.2 Adding option to change connection settings from login page](#272-adding-option-to-change-connection-setting-from-login-page)
-        - [2.7.3 Introducing animations for smooth transition](#273-introduce-animations-for-smooth-transition)
+    - [2.6 Unit tests for the data and UI layer](#26-unit-tests-for-data-and-ui-layer)
+    - [2.7 Improving Github workflows](#27-improving-github-workflows)
+    - [2.8 Integration of jetpack compose](#28-integration-of-jetpack-compose)
+    - [2.9 My Ideas for the app](#29-my-ideas-for-the-app)
+        - [2.9.1 Migrating from Butter Knife to View Binding](#291-migrating-from-butter-knife-to-view-binding)
+        - [2.9.2 Adding option to change connection settings from login page](#292-adding-option-to-change-connection-setting-from-login-page)
+        - [2.9.3 Introducing animations for smooth transition](#293-introduce-animations-for-smooth-transition)
 - [3. Contributions To Mifos](#3-contributions-to-mifos)
 - [4. Week Wise Breakdown](#4-week-wise-breakdown)
     - [4.1 Community Bonding Period (4 May - 28 May)](#41-community-bonding-period-4-may---28-may)
-        - [Week 1](#week-1)
-        - [Week 2](#week-2) 
-        - [Week 3](#week-3)
     - [4.2 Phase 1 (29 May - 9 July)](#42-phase-1-29-may---9-july)<!--  TODO along with the breakdown image -->
-        - [Week 4](#week-4)
-        - [Week 5](#week-5)
-        - [Week 6](#week-6)
-        - [Week 7](#week-7)
-        - [Week 8 and rest of phase 1](#week-8-and-rest-of-phase-1)
     - [4.3 Phase 2 (14 July - 21 Aug)](#43-phase-2-14-july---21-aug)<!--  TODO along with the breakdown image -->
-        - [Week 10](#week-10)
-        - [Week 11](#week-11)
-        - [Week 12](#week-12)
-        - [Week 13](#week-13)
-        - [Week 14](#week-14)
-        - [Week 15 and the rest of phase 2 ](#week-15-and-rest-of-phase-2)
     - [4.4 Post phase 2 (After Aug 28)](#44-post-phase-2-after-aug-28)
 - [5. Why Am I The Right Person](#5-why-am-i-the-right-person)
 - [6. Current Area of Study](#6-current-area-of-study)
@@ -83,34 +71,29 @@ Mentors:
 I wish to contribute to Mifos Mobile 6.0 - Mobile Banking App
 
 Abstract
-- 
 
-- Replace API layer from self-service Fineract APIs to Open Banking APIs <!-- how? -->
-- Complete Support for customer support/chat via RocketChat
-- Integration with an external payment system (Mojaloop, mPesa) via our payment hub. <!-- how? -->
-- Migrate Dagger to Hilt
-- Migrate from MVP to MVVM-Clean architecture 
-- The basic integration of the Navigation Graph in the project
-- The basic integration of Coroutines 
-- Continue adding unit tests for Data Layer and UI Layer <!-- how? -->
-- Cover all the screens with UI tests
-- Improve Githhub workflows and add jobs to run Unit and UI tests
+- One of the main objectives of this year's project is to replace the API layer from self-service Fineract APIs to Open Banking APIs. This will ensure that the project is up to date and compatible with the latest technology. Additionally, the project requires integration with an external payment system such as Mojaloop or mPesa through the payment hub.
+
+- Another critical task is to migrate from Dagger to Hilt, which is a new, more efficient dependency injection library. Furthermore, the project needs to migrate from MVP to MVVM-Clean architecture to improve maintainability and scalability. Additionally, the Navigation Graph needs to be integrated into the project to enhance the user experience.Coroutines need to be integrated into the project to enable asynchronous programming and simplify concurrency management. Furthermore, unit tests need to be added for the Data Layer and UI Layer, while UI tests need to be added to cover all the screens and end the project with the integration of jetpack compose.
+
+- Finally, the developer needs to improve the Github workflows and add jobs to run Unit and UI tests to ensure continuous integration and delivery. By completing these tasks, the project will be updated, efficient, and maintainable, improving its functionality and performance.
 <br>
 
-# 2. Implementation of the idea
+# 2. Implementation Details
 
 ## 2.1 Migration from MVP to MVVM
-- Currently in the MVP architecture the View and Presenter are tightly coupled, which can make it difficult to modify the code or reuse components. However with MVVM, the ViewModel serves as an intermediary between the View and Model, allowing for a looser coupling and greater flexibility
+- Currently in the MVP architecture the View and Presenter are tightly coupled, which can make it difficult to modify the code or reuse components. However with MVVM, the ViewModel serves as an intermediary between the View and Model, allowing for a **looser coupling** and greater **flexibility**
 -  MVP can lead to code that is complex and difficult to maintain, especially when dealing with complex user interfaces. MVVM can simplify the code by separating the business logic from the UI components, making it easier to modify and maintain the codebase
-- In MVP, managing the state of the View can be challenging, especially when dealing with configuration changes such as screen rotation. With MVVM, the ViewModel can maintain the state of the View, making it easier to manage and avoid data loss
-- Furthermore,MVVM architecture can be combined with reactive programming libraries like RxJava, which can make it easier to handle asynchronous data flows and improve the application's performance
+- In MVP, managing the state of the View can be challenging, especially when dealing with configuration changes such as screen rotation. With MVVM, the ViewModel can maintain the state of the View, making it easier to manage and **avoid data loss**
+- Furthermore,MVVM architecture can be combined with reactive programming libraries like RxJava, which can make it easier to handle **asynchronous data flows** and improve the application's **performance**
+
 ### 2.1.1 Migrating an Activity 
 - In the original code, all the business logic was in the SplashActivity class. This violates the separation of concerns principle, which states that each class should have a single responsibility. In the MVVM architecture, the ViewModel is responsible for holding the data and the business logic, while the View (in this case, the SplashActivity) is responsible for displaying the data and handling user interactions.
 
 - So, to follow this principle, we create a separate SplashViewModel class that holds the business logic, and move the logic from the SplashActivity to the SplashViewModel. This way, the SplashActivity is only responsible for displaying the data returned by the SplashViewModel, and the SplashViewModel is responsible for deciding what data to return and how to generate it.
 
 - The SplashViewModelFactory is used to create an instance of the SplashViewModel. We use a Factory instead of directly creating a new instance of the ViewModel class because the ViewModel class has a lifecycle that is tied to the lifecycle of the View (i.e., the SplashActivity), and the Factory ensures that we always get the same instance of the ViewModel even if the View is recreated due to configuration changes like screen rotation. The Factory creates the ViewModel using the PasscodePreferencesHelper object as a constructor parameter, so that the ViewModel has access to the data it needs to generate the appropriate Intent.
-Below is the code for SplashViewModel.kt
+Below is the code for `SplashViewModel.kt`
 <!-- - ![SplashViewModel.kt](./Screenshot%202023-03-07%20002127.png) -->
 ```xml
 import android.content.Intent
@@ -135,7 +118,7 @@ class SplashViewModel(private val passcodePreferencesHelper: PasscodePreferences
     }
 }
 ```  
-Below is the code for SplashViewModelFactory.kt:
+Below is the code for `SplashViewModelFactory.kt`:
 ``` xml
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -149,7 +132,7 @@ class SplashViewModelFactory(private val passcodePreferencesHelper: PasscodePref
 ```
 <br><br><br><br><br>
 
-Refactored code for SplashActivity.kt :
+Refactored code for `SplashActivity.kt` :
 ```xml
 class SplashActivity : BaseActivity() {
 
@@ -303,7 +286,6 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 <br>
 
 # 2.3 Migration from Dagger to Hilt 
-- I will undertake the task of migrating from dagger to hilt 
 - Hilt uses annotation processing to generate code at compile time, which can improve performance compared to Dagger's runtime reflection
 - We will start off with a `@Singleton` component and then later migrate activities and fragments
 - I propose we migrate the Login and Registeration first and then move towards inner fragments and during the migration I'll remove all  `@Component` and `@Subcomponent` interfaces and annotate all modules with `@InstallIn`.
@@ -311,8 +293,7 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 <br>
 
 # 2.4 Basic integration of coroutines
-- Coroutines are particularly effective for I/O-bound tasks, such as reading from a file, making a network request, or accessing a database. By using coroutines for these tasks, we can avoid blocking the main thread of our application and keep it responsive
-- By using coroutines for these tasks, we can ensure that the application remains responsive and doesn't freeze up
+
 <br>
 <!-- 
 # 2.5 Integration with an external payment system (Mojaloop, mPesa) via mifos's payment hub -->
@@ -325,10 +306,14 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
     - Use the authorization code to get the access token.
     - Use the access token to interact with the API.
     - Send back the response using the same token and storing the token to reach out to the daily customers and store the progress of the queries addressed and solved.
-<!-- 
-# 2.6 Unit tests for data layer and UI layer  -->
 
-# 2.6 Improving Github Workflows 
+# 2.6 Unit tests for data and UI layer  
+
+- **UI testing**: Using the latest frameworks and techniques, I will develop a robust and scalable suite of tests that can simulate user interactions and detect potential bugs, errors, or inconsistencies in the app's visual interface. By leveraging tools such as Espresso, Robolectric, and UI Automator, I will create a comprehensive set of test cases that cover various scenarios, from basic navigation and input validation to more complex workflows and edge cases
+
+- **Non-UI testing**: In addition to the UI tests, I will also design and implement a set of unit tests that focus on the underlying logic and functionality of the app, without relying on the graphical interface. These tests will use frameworks such as JUnit and Mockito to verify the correct behavior of the code, including data storage, network communication, and business logic. By separating the UI and non-UI tests, I will ensure that the app can be tested thoroughly and efficiently, without sacrificing speed or accuracy.
+
+# 2.7 Improving Github Workflows 
 - Currently the workflows do not have any jobs that runs the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
 - It can provide a faster feedback loop for developers and can help them iterate and develop features more quickly.By automating testing as part of your Github workflow, you can reduce the need for manual testing. This can save time and resources and allow developers to focus on other tasks.
 - Job for Unit test would be :
@@ -382,12 +367,18 @@ Job for UI tests would be :
 - **unitTest job** : This job is responsible for running unit tests on the application's codebase. Unit tests are automated tests that check individual units or modules of an application in isolation to ensure that they are functioning correctly. The unitTest job runs the unit tests using the Gradle wrapper and a testing framework such as JUnit or Mockito.
 - **uiTest job** :  This job is responsible for running UI tests on the application's user interface. UI tests are automated tests that simulate user interactions with the application to ensure that its UI is functioning correctly. The uiTest job runs the UI tests using a testing tool such as Espresso 
 
-- I have modified the master_dev_ci.yml and the modified yaml file can be found [here](#https://gist.github.com/PratyushSingh07/ed9285c463af907bb20ed7b5c50c49f8)
+- I have modified the master_dev_ci.yml and the modified yaml file can be found [here](https://gist.github.com/PratyushSingh07/ed9285c463af907bb20ed7b5c50c49f8)
 <br>
 
-# 2.7 My Ideas for the app
-There are certain features that are not currently present in the ideas list but in my opinion would look good and also be in accordance with the new android standards.
-## 2.7.1 Migrating from Butter Knife to View Binding
+# 2.8 Integration of Jetpack Compose
+- Currently the app is using XML layouts that can lead to overhead in terms of memory usage and application performance, as they need to be inflated at runtime, which can slow down the application.Even the errors are manifested at runtime making it cumbersome to track down the root cause
+- With jetpack compose we can have a  a more modular approach to UI development, which makes the code easier to maintain as it will allow us to break down UI into smaller, reusable components that can be tested and maintained independently. This can help reduce code complexity and improve code readability, making it easier to make changes to the UI without affecting the rest of the codebase
+- Besides compose leverages the latest Android architecture components and optimizations to render UIs more efficiently with faster UI rendering at times
+- We will also be migrating our project to MVVM and compose integrates well with **ViewModel** and **Live Data** which will make our app robust and scalable. Furthermore, we are also adding navigation graphs in our project and compose provides its own version of the Navigation component called **Navigation Compose** that allows to navigate between composables and screens.This can be implemented at a basic level and scaled further 
+
+# 2.9 My Ideas for the app
+These are the stretch goals for the project and would be considered only when we will be done with the main idea list
+## 2.9.1 Migrating from Butter Knife to View Binding <!-- will need to change to data binding-->
 - As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in your application. However, Butterknife still had its own issues such as null safety and speed. Now introduce View Binding: a low code, null safe, and fast binding tool! View Binding is a 1st party tool built by the Google Android Development team which helps reference and easily manage views within an app
 - Butterknife is a 3rd party library made to address the issue of using findViewById(...) functions to reference and interact with views. It helped reduce boilerplate code but also had to set up a @Bind annotation every time you wanted to interact with a view. Then View Binding was introduced starting at Gradle version 3.6.This single binding variable allows us to access every view, set up event listeners, and any other functionality we'd do with Butterknife.
 - On top of Butterknife being deprecated, another reason to switch is because View Binding is compile time safe and builds fast. As for findViewById(...), this way of referencing views will lead to so much unnecessary code that could be replaced with a View Binding variable.
@@ -405,13 +396,13 @@ There are certain features that are not currently present in the ideas list but 
 - With a slightly different implementation we can use it in the fragments as well . I have made changes in RegistrationFragment whose modified code can be found [here](https://gist.github.com/PratyushSingh07/b752404c4dfbe929fa4c25999e598f52)
 <br><br><br><br>
 
-## 2.7.2 Adding Option to Change Connection setting from login page
+## 2.9.2 Adding Option to Change Connection setting from login page
 - Currently the when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system
 - To overcome this there should be a support in the LoginActivity to change the **Connection Settings** that would allow the user to change the endpoint without having to uninstall the app. This would save the users time and would be a good feature to have
 - The implementation idea can be derived from **Android Client** that presently has this feature and the same can be replicated over in mifos mobile. [Here](https://user-images.githubusercontent.com/90026952/224733546-0cc1c646-fa88-4fa6-9de3-571737fb050d.mp4) is a video for your reference
 <br>
 
-## 2.7.3 Introduce animations for smooth transition
+## 2.9.3 Introduce animations for smooth transition
 - Currently there are no animations in place when we switch between screens
 - For instance , animations can be introduced while entering a new screen and when leaving a screen 
 - I have added some animations whose xml can be found [here](https://gist.github.com/PratyushSingh07/f5dde80701be455e171c82e34db745e0)
@@ -426,6 +417,8 @@ Below are the links to my contributions :
 2. <a href="https://github.com/openMF/mifos-mobile/pull/1927" >PR #1927: Fixes the behaviour of filters throught the app</a>
 <br>
 3. <a href="https://github.com/openMF/mifos-mobile/pull/1930" >PR #1930: Fixes 'Change Passcode' in Settings</a>
+<br>
+4. <a href="https://github.com/openMF/mifos-mobile/pull/1981" >PR #1981: Fixes the white background in dark mode</a>
 <!-- <br> -->
 </ul>
 
@@ -437,7 +430,7 @@ Below are the links to my contributions :
 <br>
 3. <a href="https://github.com/openMF/mifos-mobile/pull/1929" >PR #1929: Fixes background color of Passcode with the theme</a>
 <br>
-4. <a href="https://github.com/openMF/mifos-mobile/pull/1912" >PR #1912: Fixes Scrolling when in landscope mode</a>
+4. <a href="https://github.com/openMF/mifos-mobile/pull/1912" >PR #1912: Fixes Scrolling in landscape mode</a>
 <br>
 5. <a href="https://github.com/openMF/mifos-mobile/pull/1910" >PR #1910: Fixes App Crash when orientation is changed to landscape mode</a>
 <br>
@@ -448,6 +441,10 @@ Below are the links to my contributions :
 8. <a href="https://github.com/openMF/mifos-mobile/pull/1904" >PR #1904: Added Country Code Picker in the Signup form</a>
 <br>
 9. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
+<br>
+10. <a href="https://github.com/openMF/mifos-mobile/pull/1984" >PR #1984: Fixes the scrolling feature in landscape mode</a>
+<br>
+11. <a href="https://github.com/openMF/mifos-mobile/pull/2002" >PR #2002: Fixed the app to remember language set by the user before logging out</a>
 <br>
 </ul>
 <br><br><br><br><br><br>
@@ -651,12 +648,8 @@ Yes, I do have experience with Android and Java and have built projects centered
 <br>
 
 # 13. Other Commitments
-1. College Exams
-2. Course projects
-   
-These are going to be an integral part of my 6th semester activities. They are not going to affect my GSOC efforts.  
-I will be able to deliver my commited number of hours per week without much hindrance.
-<!-- I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments. -->
+
+I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments.
 <!-- <br> -->
 
 # 14. What motivates me to work with Mifos for GSoC 
