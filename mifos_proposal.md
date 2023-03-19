@@ -25,45 +25,45 @@ Mentors:
 <br><br><br><br><br><br><br><br>
 
 # Contents     
-- [1. Project Idea](#1-project-idea)
-- [2. Implementation Details ](#2-implementation-details)   
-    - [2.1 Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm)  
-        - [2.1.1 Migrating an activity](#211-migrating-an-activity) 
-        - [2.1.2 Migrating a fragment](#212-migrating-a-fragment)
-    - [2.2 Basic Integration of Navigation Graph](#22-basic-integration-of-navigation-graph)
-    - [2.3 Migration from Dagger to Hilt](#23-migration-from-dagger-to-hilt)
-    - [2.4 Basic integration of coroutines](#24-basic-integration-of-coroutines)
-    - [2.5 Integration of rocket chat for customer support](#25-customer-support-via-rocket-chat)
-    - [2.6 Unit tests for the data and UI layer](#26-unit-tests-for-data-and-ui-layer)
-    - [2.7 Improving Github workflows](#27-improving-github-workflows)
-    - [2.8 Integration of jetpack compose](#28-integration-of-jetpack-compose)
-    - [2.9 My Ideas for the app](#29-my-ideas-for-the-app)
-        - [2.9.1 Use Fineract SDK](#291-use-fineract-sdk)
-        - [2.9.2 Migrating from Butter Knife to View Binding](#292-migrating-from-butter-knife-to-view-binding)
-        - [2.9.3 Adding option to change connection settings from login page](#293-adding-option-to-change-connection-setting-from-login-page)
-- [3. Contributions To Mifos](#3-contributions-to-mifos)
-- [4. Week Wise Breakdown](#4-week-wise-breakdown)
-    - [4.1 Community Bonding Period (4 May - 28 May)](#41-community-bonding-period-4-may---28-may)
-    - [4.2 Phase 1 (29 May - 9 July)](#42-phase-1-29-may---9-july)<!--  TODO along with the breakdown image -->
-    - [4.3 Phase 2 (14 July - 21 Aug)](#43-phase-2-14-july---21-aug)<!--  TODO along with the breakdown image -->
-    - [4.4 Post phase 2 (After Aug 28)](#44-post-phase-2-after-aug-28)
-- [5. Why Am I The Right Person](#5-why-am-i-the-right-person)
-- [6. Current Area of Study](#6-current-area-of-study)
-- [7. Contact Information](#7-contact-information)
-- [8. Career Goals](#8-career-goals)
-- [9. My Projects](#9-my-projects)
-- [10. Gitter Channel](#10-gitter-channel)
-- [11. Other Open Source Contributions](#11-other-open-source-contributions)
-- [12. Experience with Angular/Java/Spring/Hibernate/MySQL/Android](#12-experience-with-angularjavaspringhibernatemysqlandroid)
-- [13. Other Commitments](#13-other-commitments)
-- [14. What motivates me to work with mifos](#14-what-motivates-me-to-work-with-mifos-for-gsoc)
-- [15. Previous Participation in GSoc](#15-previous-participation-in-gsoc)
-- [16. Application to multiple Orgs](#16-application-to-multiple-orgs)
+1. [Project Idea](#1-project-idea)
+2.  [Implementation Details ](#2-implementation-details)   
+    2.1  [Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm)  <br>
+    &nbsp;&nbsp; 2.1.1      [Migrating an activity](#211-migrating-an-activity) <br>
+    &nbsp;&nbsp; 2.1.2  [Migrating a fragment](#212-migrating-a-fragment)<br>
+    2.2  [Basic Integration of Navigation Graph](#22-basic-integration-of-navigation-graph)<br>
+    2.3  [Migration from Dagger to Hilt](#23-migration-from-dagger-to-hilt)<br>
+    2.4 [Basic integration of coroutines](#24-basic-integration-of-coroutines)<br>
+    2.5 [Integration of rocket chat for customer support](#25-customer-support-via-rocket-chat)<br>
+    2.6 [Unit tests for the data and UI layer](#26-unit-tests-for-data-and-ui-layer)<br>
+    2.7 [Improving Github workflows](#27-improving-github-workflows)<br>
+    2.8 [Integration of jetpack compose](#28-integration-of-jetpack-compose)<br>
+    2.9 [My Ideas for the app](#29-my-ideas-for-the-app)<br>
+       &nbsp;&nbsp;  2.9.1 [Use Fineract SDK](#291-use-fineract-sdk)<br>
+        &nbsp;&nbsp;  2.9.2  [Migrating from Butter Knife to View Binding](#292-migrating-from-butter-knife-to-view-binding)<br>
+        &nbsp;&nbsp;  2.9.3  [Adding option to change connection settings from login page](#293-adding-option-to-change-connection-setting-from-login-page)<br>
+3. [Contributions To Mifos](#3-contributions-to-mifos)
+4. [Week Wise Breakdown](#4-week-wise-breakdown)<br>
+    4.1  [Community Bonding Period (4 May - 28 May)](#41-community-bonding-period-4-may---28-may)<br>
+    4.2  [Phase 1 (29 May - 9 July)](#42-phase-1-29-may---9-july)<br><!--  TODO along with the breakdown image -->
+    4.3  [Phase 2 (14 July - 21 Aug)](#43-phase-2-14-july---21-aug)<br><!--  TODO along with the breakdown image -->
+    4.4 [Post phase 2 (After Aug 28)](#44-post-phase-2-after-aug-28)
+5.  [Why Am I The Right Person](#5-why-am-i-the-right-person)
+6.  [Current Area of Study](#6-current-area-of-study)
+7.  [Contact Information](#7-contact-information)
+8.  [Career Goals](#8-career-goals)
+9.  [My Projects](#9-my-projects)
+10.  [Gitter Channel](#10-gitter-channel)
+11.  [Other Open Source Contributions](#11-other-open-source-contributions)
+12.  [Experience with Angular/Java/Spring/Hibernate/MySQL/Android](#12-experience-with-angularjavaspringhibernatemysqlandroid)
+13.  [Other Commitments](#13-other-commitments)
+14.  [What motivates me to work with mifos](#14-what-motivates-me-to-work-with-mifos-for-gsoc)
+15.  [Previous Participation in GSoc](#15-previous-participation-in-gsoc)
+16.  [Application to multiple Orgs](#16-application-to-multiple-orgs)
 <br><br><br><br><br><br><br><br><br>
 
 
 # **1. Project Idea**
-I wish to contribute to Mifos Mobile 6.0 - Mobile Banking App
+I am enthalled with Mifos Mobile ideas list and I thus wish to contribute in this project
 
 Abstract
 
@@ -88,7 +88,7 @@ Abstract
 - So, to follow this principle, we create a separate SplashViewModel class that holds the business logic, and move the logic from the SplashActivity to the SplashViewModel. This way, the SplashActivity is only responsible for displaying the data returned by the SplashViewModel, and the SplashViewModel is responsible for deciding what data to return and how to generate it.
 
 - The SplashViewModelFactory is used to create an instance of the SplashViewModel. We use a Factory instead of directly creating a new instance of the ViewModel class because the ViewModel class has a lifecycle that is tied to the lifecycle of the View (i.e., the SplashActivity), and the Factory ensures that we always get the same instance of the ViewModel even if the View is recreated due to configuration changes like screen rotation. The Factory creates the ViewModel using the PasscodePreferencesHelper object as a constructor parameter, so that the ViewModel has access to the data it needs to generate the appropriate Intent.
-Below is the code for `SplashViewModel.kt`
+Below is the code for <font color="#dd4124">SplashViewModel.kt</font>
 <!-- - ![SplashViewModel.kt](./Screenshot%202023-03-07%20002127.png) -->
 ```js
 import android.content.Intent
@@ -113,7 +113,7 @@ class SplashViewModel(private val passcodePreferencesHelper: PasscodePreferences
     }
 }
 ```  
-Below is the code for `SplashViewModelFactory.kt`:
+Below is the code for <font color="#dd4124">SplashViewModelFactory.kt</font>:
 ``` js
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -125,7 +125,7 @@ class SplashViewModelFactory(private val passcodePreferencesHelper: PasscodePref
     }
 }
 ```
-Refactored code for `SplashActivity.kt` :
+Refactored code for <font color="#dd4124">SplashActivity.kt</font> :
 ```js
 class SplashActivity : BaseActivity() {
 
@@ -162,7 +162,7 @@ class SplashActivity : BaseActivity() {
 - In the LocationsViewModel class, I created two methods to handle the logic previously handled by the presenter. These methods receive the GoogleMap instance as a parameter and use it to add a marker and animate the camera to the headquarter location. In the LocationsFragment, I removed the onCreateView() method from the MVP implementation and created a viewModel property that is initialized in the onCreateView() method. I also removed the addMarker() and addAnimationToHeadquarter() methods and called the corresponding methods in the viewModel instance from the onMapReady() method.
 
 - Overall, the MVVM implementation is more modular and easier to test, as the business logic is separated from the view.<br>
-Below is the LocationsViewModel.kt :
+Below is the <font color="#dd4124">LocationsViewModel.kt</font> :
 ``` js
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -187,7 +187,7 @@ class LocationsViewModel : ViewModel() {
     }
 }
 ```
-Below is the modified LocationsFragment.kt : 
+Below is the modified <font color="#dd4124">LocationsFragment.kt</font> : 
 ```js
 import android.os.Bundle
 import android.util.Log
@@ -247,7 +247,7 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
 - The Navigation Component in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
 - Once the Navigation Graph is created, the next step is to integrate it into the app's code. This involves using the Navigation Component APIs to load and navigate to the appropriate destination based on user input.
 - As an example , I have taken up **SettingsFragment** and **UpdatePasswordFragment** . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost.
-- The appropriate changes in `activity_settings.xml` is : 
+- The appropriate changes in <font color="#dd4124">activity_settings.xml</font> is : 
 ```xml
  <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
@@ -264,8 +264,12 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
             app:navGraph="@navigation/nav_frags" />
 
 ```
-- Now we do not need `replaceFragment(SettingsFragment.newInstance(), false,R.id.fragmentContainerView)` in the SettingsActivity.We now just need to do one last change in the SettingsFragment i.e. we need to add findNavController.
-- The change in the **SettingsFragment** is :
+- Now we do not need <span>
+ ``` js 
+replaceFragment(SettingsFragment.newInstance(), false,R.id.fragmentContainerView) 
+```
+</span> in the **SettingsActivity** .We now just need to do one last change in the SettingsFragment i.e. we need to add findNavController.
+- The change in the <font color="#dd4124">SettingsFragment</font> is :
 ```kotlin
 override fun onPreferenceTreeClick(preference: Preference): Boolean {
         when (preference.key) {
@@ -289,6 +293,9 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 - We could use **Flow** to compose and coordinate multiple related operations; each of which in-turn call multiple coroutines
 **ViewModel** calls this code confining the scope to its *viewModelScope* so that when this ViewModel is cleared; all running operations in this scope are cancelled. We then use **LiveData** to communicate the result to the View layer.Finally View’s will call these method’s from ViewModel
 - Thus, using coroutines and viewModelScope allows for asynchronous operations to be run off the main thread, thus preventing the UI from freezing or becoming unresponsive during long-running tasks and use of viewModelScope ensures that all running operations in the ViewModel are cancelled when the ViewModel is cleared, preventing potential memory leaks and ensuring efficient use of system resources.
+
+![MVVM+Coroutine](MVVM+Coroutine.jpg)
+
 
 # **2.5 Customer support via rocket chat**
 - A customer support will be a viable step which will provide a better experience to our users and rocket chat can support large volumes of customer inquiries and interactions
@@ -438,6 +445,7 @@ Below are the links to my contributions :
 11. <a href="https://github.com/openMF/mifos-mobile/pull/2017" >PR #2017: Fixed the crashing of app when changing main mobile theme</a>
 <br>
 </ul>
+<br><br><br><br><br><br>
 
 # **4. Week Wise Breakdown**
 
@@ -447,7 +455,6 @@ Below are the links to my contributions :
 - Get in touch with the developers and the mentor
 - Introduction to the community, to the mentor and fix timings to communicate
 - Discuss any suggestions and changes to the project. There could modifications, new additions or ammendments; it would be better to go over these early 
-<br><br><br>
 
 ### *Week 2*
 - Go Thorugh Mifos-Mobile codebase 
@@ -485,7 +492,6 @@ Below are the links to my contributions :
 - This week would be reserved for the migration from dagger to hilt & also for the integration of coroutines in the project
 - Considering the fact that we need to write unit tests as well, Hilt will make it easier to write unit tests for the code by allowing us to easily swap out dependencies with mock objects 
 - Hence it will be better to get on with this at the earliest so that we can lay foundation for a better unit test phase
-<br><br><br>
 
 ### *Week 7*
 
@@ -527,7 +533,6 @@ Below are the links to my contributions :
 
 - After writing all the unit tests I will add appropriate jobs in the existing workflow to run these tests
 - Running tests regularly and automating the testing process can save a lot of time and prevent issues from arising in the codebase
-<br><br><br>
 
 ### *Week 15 and Rest of Phase 2*
 
@@ -553,7 +558,7 @@ I am pre final year student pursuing **Information Science and Engineering** at 
     - My studies have focused on Information Retrieval systems such as Search Engines,Cross Language Information Retrieval and digital libraries
     - Learning about the fundamentals of ML that included supervised and unsupervised learning,neural networks and deep learning
     - I have also had the privilege to learn about distributed systems, cloud computing, and virtualization technologies.
-<!-- <br><br><br><br><br><br> -->
+<br><br><br><br><br>
 
 # **7. Contact Information**
 **Name**: Pratyush Singh
@@ -598,7 +603,7 @@ database
 
 # **10. Gitter Channel** 
 Yes, I have visited all of mifos's gitter channel and my id was <a href="(@pratyushsingh07-63388c746da03739849d52a7:gitter.im)">PratyushSingh07</a>
-<br><br><br>
+<!-- <br><br><br> -->
 
 # **11. Other Open Source Contributions** 
 I have been contributing to Open Souce for quite some time and here are some of my contributions:
@@ -609,7 +614,7 @@ I have been contributing to Open Souce for quite some time and here are some of 
     - Revamped the complete UI of the application and introduced a dark mode theme 
     - My contributions for Dare2Change: [check here](https://github.com/coder2699/Dare2Change/pulls?q=is%3Apr+author%3A%40me+is%3Aclosed)
 2. Anki-Android : 
-    - There were certain `@KotlinCleanup` annotations in the codebase with messages such as *make data not null* and *simplify through scope functions*
+    - There were certain  <font color="green">@KotlinCleanup</font> annotations in the codebase with messages such as *make data not null* and *simplify through scope functions*
     - I opened a few pull requests adhering to above mentioned messages
     - My contributions to Anki-Android : [check here](https://github.com/ankidroid/Anki-Android/pulls?q=is%3Apr+author%3A%40me+is%3Aclosed)
 3. Catroid : 
@@ -625,7 +630,7 @@ Yes, I do have experience with Android and Java and have built projects centered
 # **13. Other Commitments**
 
 I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments.
-<!-- <br> -->
+<br><br><br> 
 
 # **14. What motivates me to work with Mifos for GSoC** 
 Mifos Initiative is making a significant difference in the world by providing financial inclusion to people who would otherwise be excluded from the formal financial system. This mission is truly inspiring, and being a part of it through the Google Summer of Code program is a privilege.
