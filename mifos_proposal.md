@@ -27,20 +27,21 @@ Mentors:
 # Contents     
 1. [Project Idea](#1-project-idea)
 2.  [Implementation Details ](#2-implementation-details)   
-    2.1  [Migration from MVP to MVVM](#21-migration-from-mvp-to-mvvm)  <br>
-    &nbsp;&nbsp; 2.1.1      [Migrating an activity](#211-migrating-an-activity) <br>
-    &nbsp;&nbsp; 2.1.2  [Migrating a fragment](#212-migrating-a-fragment)<br>
-    2.2  [Basic Integration of Navigation Graph](#22-basic-integration-of-navigation-graph)<br>
-    2.3  [Migration from Dagger to Hilt](#23-migration-from-dagger-to-hilt)<br>
-    2.4 [Basic integration of coroutines](#24-basic-integration-of-coroutines)<br>
-    2.5 [Integration of rocket chat for customer support](#25-customer-support-via-rocket-chat)<br>
-    2.6 [Unit tests for the data and UI layer](#26-unit-tests-for-data-and-ui-layer)<br>
-    2.7 [Improving Github workflows](#27-improving-github-workflows)<br>
-    2.8 [Integration of jetpack compose](#28-integration-of-jetpack-compose)<br>
-    2.9 [My Ideas for the app](#29-my-ideas-for-the-app)<br>
-       &nbsp;&nbsp;  2.9.1 [Use Fineract SDK](#291-use-fineract-sdk)<br>
-        &nbsp;&nbsp;  2.9.2  [Migrating from Butter Knife to View Binding](#292-migrating-from-butter-knife-to-view-binding)<br>
-        &nbsp;&nbsp;  2.9.3  [Adding option to change connection settings from login page](#293-adding-option-to-change-connection-setting-from-login-page)<br>
+    2.1  [Integration with Mojaloop via payment hub](#21-integration-with-mojaloop-via-payment-hub)<br>
+    2.2  [Migration from MVP to MVVM](#22-migration-from-mvp-to-mvvm)  <br>
+    &nbsp;&nbsp; 2.2.1      [Migrating an activity](#221-migrating-an-activity) <br>
+    &nbsp;&nbsp; 2.2.2  [Migrating a fragment](#222-migrating-a-fragment)<br>
+    2.3  [Basic Integration of Navigation Graph](#23-basic-integration-of-navigation-graph)<br>
+    2.4  [Migration from Dagger to Hilt](#24-migration-from-dagger-to-hilt)<br>
+    2.5 [Basic integration of coroutines](#25-basic-integration-of-coroutines)<br>
+    2.6 [Integration of rocket chat for customer support](#26-customer-support-via-rocket-chat)<br>
+    2.7 [Unit tests for the data and UI layer](#27-unit-tests-for-data-and-ui-layer)<br>
+    2.8 [Improving Github workflows](#28-improving-github-workflows)<br>
+    2.9 [Integration of jetpack compose](#29-integration-of-jetpack-compose)<br>
+    2.10 [My Ideas for the app](#210-my-ideas-for-the-app)<br>
+       &nbsp;&nbsp;  2.10.1 [Use Fineract SDK](#2101-use-fineract-sdk)<br>
+        &nbsp;&nbsp;  2.10.2  [Migrating from Butter Knife to View Binding](#2102-migrating-from-butter-knife-to-view-binding)<br>
+        &nbsp;&nbsp;  2.10.3  [Adding option to change connection settings from login page](#2103-adding-option-to-change-connection-setting-from-login-page)<br>
 3. [Contributions To Mifos](#3-contributions-to-mifos)
 4. [Week Wise Breakdown](#4-week-wise-breakdown)<br>
     4.1  [Community Bonding Period (4 May - 28 May)](#41-community-bonding-period-4-may---28-may)<br>
@@ -63,9 +64,10 @@ Mentors:
 
 
 # **1. Project Idea**
-I am enthalled with Mifos Mobile ideas list and I thus wish to contribute in this project
+I am enthralled with Mifos Mobile ideas list and I thus wish to contribute in this project
 
 Abstract
+- 
 
 - One of the main objectives of this year's project is to replace the API layer from self-service Fineract APIs to Open Banking APIs. This will ensure that the project is up to date and compatible with the latest technology. Additionally, the project requires integration with an external payment system such as Mojaloop or mPesa through the payment hub.
 
@@ -76,13 +78,20 @@ Abstract
 
 # **2. Implementation Details**
 
-## **2.1 Migration from MVP to MVVM**
+## **2.1 Integration with Mojaloop via payment hub**
+- The Mifos Payment Hub can be used to connect to Mojaloop (payments switch) for inbound and outbound transactions by implementing Mojaloop API and mapping them to the Fineract API
+- To my understanding we will Install Mifos's Payment Hub on a server or cloud platform & then configure the Payment Hub to use the Mojaloop API as the payment gateway. We can then integrate the payment hub with our mobile using the available APIs
+- For testing purposes,the integration can be tested in a sandbox environment to ensure it is working as expected
+
+     ![Payment Hub](PaymentHub.jpg)
+
+## **2.2 Migration from MVP to MVVM**
 - Currently in the MVP architecture the View and Presenter are tightly coupled, which can make it difficult to modify the code or reuse components. However with MVVM, the ViewModel serves as an intermediary between the View and Model, allowing for a **looser coupling** and greater **flexibility**
 -  MVP can lead to code that is complex and difficult to maintain, especially when dealing with complex user interfaces. MVVM can simplify the code by separating the business logic from the UI components, making it easier to modify and maintain the codebase
 - In MVP, managing the state of the View can be challenging, especially when dealing with configuration changes such as screen rotation. With MVVM, the ViewModel can maintain the state of the View, making it easier to manage and **avoid data loss**
 - Furthermore,MVVM architecture can be combined with reactive programming libraries like RxJava, which can make it easier to handle **asynchronous data flows** and improve the application's **performance**
 
-### **2.1.1 Migrating an Activity**
+### **2.2.1 Migrating an Activity**
 - In the original code, all the business logic was in the SplashActivity class. This violates the separation of concerns principle, which states that each class should have a **single responsibility**. In the MVVM architecture, the ViewModel is responsible for holding the data and the business logic, while the View (in this case, the SplashActivity) is responsible for displaying the data and handling user interactions.
 
 - So, to follow this principle, we create a separate SplashViewModel class that holds the business logic, and move the logic from the SplashActivity to the SplashViewModel. This way, the SplashActivity is only responsible for displaying the data returned by the SplashViewModel, and the SplashViewModel is responsible for deciding what data to return and how to generate it.
@@ -91,14 +100,6 @@ Abstract
 Below is the code for <font color="#dd4124">SplashViewModel.kt</font>
 <!-- - ![SplashViewModel.kt](./Screenshot%202023-03-07%20002127.png) -->
 ```js
-import android.content.Intent
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.mifos.mobile.passcode.utils.PasscodePreferencesHelper
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-
 class SplashViewModel(private val passcodePreferencesHelper: PasscodePreferencesHelper) : ViewModel() {
     var intent: Intent?=null
     val liveData : MutableLiveData<String> = MutableLiveData()
@@ -115,10 +116,6 @@ class SplashViewModel(private val passcodePreferencesHelper: PasscodePreferences
 ```  
 Below is the code for <font color="#dd4124">SplashViewModelFactory.kt</font>:
 ``` js
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.mifos.mobile.passcode.utils.PasscodePreferencesHelper
-
 class SplashViewModelFactory(private val passcodePreferencesHelper: PasscodePreferencesHelper) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return SplashViewModel(passcodePreferencesHelper) as T
@@ -154,7 +151,7 @@ class SplashActivity : BaseActivity() {
     }
 }
 ```
-### **2.1.2 Migrating a fragment**
+### **2.2.2 Migrating a fragment**
 - I have converted the LocationsFragment from MVP to MVVM because the MVVM pattern separates the business logic from the view, making the code more modular and easier to test.In the MVP pattern, the presenter is responsible for handling the business logic and updating the view, which can lead to tight coupling between the view and the presenter. This can make the code harder to maintain and test.
 
 - In the MVVM pattern, the view model is responsible for handling the business logic, while the view is responsible for displaying the data. This separation of concerns makes the code more modular and easier to test.To convert the LocationsFragment from MVP to MVVM, I removed any reference to the presenter and created a view model to handle the business logic.
@@ -164,14 +161,6 @@ class SplashActivity : BaseActivity() {
 - Overall, the MVVM implementation is more modular and easier to test, as the business logic is separated from the view.<br>
 Below is the <font color="#dd4124">LocationsViewModel.kt</font> :
 ``` js
-import androidx.lifecycle.ViewModel
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import org.mifos.mobile.MifosSelfServiceApp.Companion.context
-import org.mifos.mobile.R
-
 class LocationsViewModel : ViewModel() {
 
     private val headquarterLatLng = LatLng(47.61115, -122.34481)
@@ -189,19 +178,6 @@ class LocationsViewModel : ViewModel() {
 ```
 Below is the modified <font color="#dd4124">LocationsFragment.kt</font> : 
 ```js
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import butterknife.BindView
-import butterknife.ButterKnife
-import com.google.android.gms.maps.*
-import org.mifos.mobile.R
-import org.mifos.mobile.ui.fragments.base.BaseFragment
-import org.mifos.mobile.viewModels.LocationsViewModel
-
 class LocationsFragment : BaseFragment(), OnMapReadyCallback {
 
     private lateinit var viewModel: LocationsViewModel
@@ -241,10 +217,10 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
     }
 }
 ```
-# **2.2 Basic Integration of Navigation Graph**
+# **2.3 Basic Integration of Navigation Graph**
 - There aren't any navigation graphs in the project yet hence all navigation logic between different screens and activities are handled manually making the project more complex and error-prone code, which can slow down the app and make it more difficult to maintain.As the app grows in complexity, it can become increasingly difficult to manage the navigation logic manually. This can make it challenging to add new features or modify existing ones, which can limit the app's ability to scale and evolve over time.
-- With navigation graph in place can improve user experience by allowing users to **easily navigate** between screens and tasks .Besides it provides a simplified and standardized approach to app navigation, making it easier for developers to build and maintain complex apps. It also helps to **reduce** the amount of code required to handle navigation, which can save development time and effort.
-- The Navigation Component in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
+- With navigation graph in place can improve user experience by allowing users to easily navigate between screens and tasks .Besides it provides a simplified and standardized approach to app navigation, making it easier for developers to build and maintain complex apps. It also helps to reduce the amount of code required to handle navigation, which can save development time and effort.
+- The **Navigation Component** in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
 - Once the Navigation Graph is created, the next step is to integrate it into the app's code. This involves using the Navigation Component APIs to load and navigate to the appropriate destination based on user input.
 - As an example , I have taken up **SettingsFragment** and **UpdatePasswordFragment** . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost.
 - The appropriate changes in <font color="#dd4124">activity_settings.xml</font> is : 
@@ -262,13 +238,12 @@ class LocationsFragment : BaseFragment(), OnMapReadyCallback {
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:navGraph="@navigation/nav_frags" />
-
 ```
-- Now we do not need <span>
+- Now we do not need the below code in **SettingsActivity**<span>
  ``` js 
 replaceFragment(SettingsFragment.newInstance(), false,R.id.fragmentContainerView) 
 ```
-</span> in the **SettingsActivity** .We now just need to do one last change in the SettingsFragment i.e. we need to add findNavController.
+- We now just need to do one last change in the SettingsFragment i.e. we need to add findNavController.
 - The change in the <font color="#dd4124">SettingsFragment</font> is :
 ```kotlin
 override fun onPreferenceTreeClick(preference: Preference): Boolean {
@@ -278,26 +253,29 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
         return super.onPreferenceTreeClick(preference)
     }
 ```
-- I have taken this just to show it as demo and I can add a few more navigation graphs that would make the app further scalable. For instance , currently we have a **LoginActivity** and a **RegisterationActivity** .But the role of the **RegisterationActivity** is just to replace the fragment which is **RegisterationFragment**. We can get rid of the two activities and replace them by just one activity let's call it **AuthenticationActivity** and convert the **LoginActivity** to a fragment.
+- I have taken this just to show it as demo and I can add a few more navigation graphs that would make the app further scalable. For instance , currently we have a **LoginActivity** and a **RegistrationActivity** .But the role of the **RegistrationActivity** is just to replace the fragment which is **RegistrationFragment**. We can get rid of the two activities and replace them by just one activity let's call it **AuthenticationActivity** and convert the **LoginActivity** to a fragment.
 - So now you will have just one Activity and on top of that you will have two fragments that can be added in another navigation graph.
-<br>
+<br><br>
 
-# **2.3 Migration from Dagger to Hilt**
+# **2.4 Migration from Dagger to Hilt**
 - We will start off with a <font color="green"> @Singleton</font> component and then later migrate activities and fragments
 - I propose we migrate the Login and Registeration first and then move towards inner fragments and during the migration I'll remove all   <font color="green">@Component</font> and  <font color="green">@Subcomponent</font> interfaces and annotate all modules with  <font color="green">@InstallIn</font>.
 - After the migration, all Application/Activity/Fragment/View classes will be annotated with  <font color="green">@AndroidEntryPoint</font> and any code instantiating or propagating components shall be removed.
+
+    ![Injection Flow](InjectionFlow.jpg)
+
 <br>
 
-# **2.4 Basic integration of coroutines**
+# **2.5 Basic integration of coroutines**
 - Keeping in mind that we will be migrating to MVVM ,our **Repository layer** would use coroutines to run long running code off the main thread
 - We could use **Flow** to compose and coordinate multiple related operations; each of which in-turn call multiple coroutines
 **ViewModel** calls this code confining the scope to its *viewModelScope* so that when this ViewModel is cleared; all running operations in this scope are cancelled. We then use **LiveData** to communicate the result to the View layer.Finally View’s will call these method’s from ViewModel
 - Thus, using coroutines and viewModelScope allows for asynchronous operations to be run off the main thread, thus preventing the UI from freezing or becoming unresponsive during long-running tasks and use of viewModelScope ensures that all running operations in the ViewModel are cancelled when the ViewModel is cleared, preventing potential memory leaks and ensuring efficient use of system resources.
 
-![MVVM+Coroutine](MVVM+Coroutine.jpg)
+  ![MVVM+Coroutine](MVVM+Flow+Coroutine.jpg)
 
 
-# **2.5 Customer support via rocket chat**
+# **2.6 Customer support via rocket chat**
 - A customer support will be a viable step which will provide a better experience to our users and rocket chat can support large volumes of customer inquiries and interactions
 - A probable approach of implementing rocket chat would include :
     - Saving client id and client secret in the app
@@ -306,13 +284,13 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
     - Use the access token to interact with the API
     - Send back the response using the same token and storing the token to reach out to the daily customers and store the progress of the queries addressed and solved
 
-# **2.6 Unit tests for data and UI layer**  
+# **2.7 Unit tests for data and UI layer**  
 
 - **UI testing**: Using the latest frameworks and techniques, I will develop a robust and scalable suite of tests that can simulate user interactions and detect potential bugs, errors, or inconsistencies in the app's visual interface. By leveraging tools such as Espresso, Robolectric, and UI Automator, I will create a comprehensive set of test cases that cover various scenarios, from basic navigation and input validation to more complex workflows and edge cases
 
 - **Non-UI testing**: In addition to the UI tests, I will also design and implement a set of unit tests that focus on the underlying logic and functionality of the app, without relying on the graphical interface. These tests will use frameworks such as JUnit and Mockito to verify the correct behavior of the code, including data storage, network communication, and business logic. By separating the UI and non-UI tests, I will ensure that the app can be tested thoroughly and efficiently, without sacrificing speed or accuracy.
 
-# **2.7 Improving Github Workflows** 
+# **2.8 Improving Github Workflows** 
 - Currently the workflows do not have any jobs that runs the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
 - It can provide a faster feedback loop for developers and can help them iterate and develop features more quickly.By automating testing as part of your Github workflow, you can reduce the need for manual testing. This can save time and resources and allow developers to focus on other tasks.
 - Job for Unit test would be :
@@ -367,43 +345,35 @@ Job for UI tests would be :
 - **uiTest job** :  This job is responsible for running UI tests on the application's user interface. UI tests are automated tests that simulate user interactions with the application to ensure that its UI is functioning correctly. The uiTest job runs the UI tests using a testing tool such as Espresso 
 
 - I have modified the master_dev_ci.yml and the modified yaml file can be found [here](https://gist.github.com/PratyushSingh07/ed9285c463af907bb20ed7b5c50c49f8)
-<br>
+<br><br><br><br>
 
-# **2.8 Integration of Jetpack Compose**
+# **2.9 Integration of Jetpack Compose**
 - Currently the app is using XML layouts that can lead to overhead in terms of memory usage and application performance, as they need to be inflated at runtime, which can slow down the application.Even the errors are manifested at runtime making it cumbersome to track down the root cause
 - With jetpack compose we can have a  a more modular approach to UI development, which makes the code easier to maintain as it will allow us to break down UI into smaller, reusable components that can be tested and maintained independently. This can help reduce code complexity and improve code readability, making it easier to make changes to the UI without affecting the rest of the codebase
 - Besides compose leverages the latest Android architecture components and optimizations to render UIs more efficiently with faster UI rendering at times
 - We will also be migrating our project to MVVM and compose integrates well with **ViewModel** and **Live Data** which will make our app robust and scalable. Furthermore, we are also adding navigation graphs in our project and compose provides its own version of the Navigation component called **Navigation Compose** that allows to navigate between composables and screens.This can be implemented at a basic level and scaled further 
 
-# **2.9 My Ideas for the app**
+# **2.10 My Ideas for the app**
 These are the stretch goals for the project and would be considered only when we will be done with the main idea list
-## **2.9.1 Use Fineract SDK**
+## **2.10.1 Use Fineract SDK**
 - We have a Fineract SDK which can be imported in our project as well . This will allow us to reduce the boiler plate code by reducing the number of server calls from within our project 
 - This will allow our app to be light weight and  will provide a better experience to our users
 <br>
 
-## **2.9.2 Migrating from Butter Knife to View Binding** <!-- will need to change to data binding-->
-- As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in your application. However, Butterknife still had its own issues such as null safety and speed. Now introduce View Binding: a low code, null safe, and fast binding tool! View Binding is a 1st party tool built by the Google Android Development team which helps reference and easily manage views within an app
-- Butterknife is a 3rd party library made to address the issue of using findViewById(...) functions to reference and interact with views. It helped reduce boilerplate code but also had to set up a @Bind annotation every time you wanted to interact with a view. Then View Binding was introduced starting at Gradle version 3.6.This single binding variable allows us to access every view, set up event listeners, and any other functionality we'd do with Butterknife.
-- Butterknife being deprecated is another reason to switch and also View Binding is compile time safe and builds fast. As for findViewById(...), this way of referencing views will lead to so much unnecessary code that could be replaced with a View Binding variable.
+## **2.10.2 Migrating from Butter Knife to Data Binding** 
+- As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in our application. However, Butterknife still had its own issues such as null safety and speed.
+- Data Binding is a powerful feature of Android that allows us to bind UI components in our layout files directly to the data model, eliminating the need for boilerplate code and reducing the likelihood of errors. Here are some benefits of using Data Binding with the MVVM pattern, and its advantages over Butter Knife are : 
+    - Data Binding allows us to eliminate a lot of boilerplate code that is required when using Butter Knife. With Data Binding, we can bind our UI components directly to the data model, reducing the need for manual view injection.
+    - Data Binding is type-safe, meaning that we can detect errors at compile time rather than runtime. This can help reduce the likelihood of bugs and improve the stability of our code.
+    - Considering the fact that we are migrating to MVVM , Data Binding is a natural fit with the MVVM pattern. By binding our UI components directly to our ViewModel, we can create a clean and modular code structure that is easy to understand and maintain.
 
-- Make changes in the gradle : 
-    - android {
-    ...
-    buildFeatures {
-        viewBinding = true
-    }
-} <br>
+      ![MVVM+DataBinding](MVVM+Databinding.jpg)
 
-- For demonstration , I have migrated the LoginActivity from **Butter Knife** to **View Binding**. The modified file can be found [here](https://gist.github.com/PratyushSingh07/9c005a4c8ac8ff127550912f658a53d0)
-
-- With a slightly different implementation we can use it in the fragments as well . I have made changes in RegistrationFragment whose modified code can be found [here](https://gist.github.com/PratyushSingh07/b752404c4dfbe929fa4c25999e598f52)
-
-## **2.9.3 Adding Option to Change Connection setting from login page**
-- Currently the when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system
+## **2.10.3 Adding Option to Change Connection setting from login page**
+- Currently when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system
 - To overcome this there should be a support in the LoginActivity to change the **Connection Settings** that would allow the user to change the endpoint without having to uninstall the app. This would save the users time and would be a good feature to have
 - The implementation idea can be derived from **Android Client** that presently has this feature and the same can be replicated over in mifos mobile. [Here](https://user-images.githubusercontent.com/90026952/224733546-0cc1c646-fa88-4fa6-9de3-571737fb050d.mp4) is a video for your reference
-<br>
+<br><br>
 
 # **3. Contributions to Mifos**
 Below are the links to my contributions : 
@@ -411,18 +381,25 @@ Below are the links to my contributions :
 <ul>
 1. <a href="https://github.com/openMF/mifos-mobile/pull/1926" >PR #1926: Modified Error message in case of wrong endpoint</a>
 <br>
-2. <a href="https://github.com/openMF/mifos-mobile/pull/1927" >PR #1927: Fixes the behaviour of filters throught the app</a>
+2. <a href="https://github.com/openMF/mifos-mobile/pull/1927" >PR #1927: Fixes the behaviour of filters in savings section</a>
 <br>
-3. <a href="https://github.com/openMF/mifos-mobile/pull/1930" >PR #1930: Fixes 'Change Passcode' in Settings</a>
+3. <a href="https://github.com/openMF/mifos-mobile/pull/1930" >PR #1930: Fixes unresponsive nature of 'Change Passcode' in Settings</a>
 <br>
 4. <a href="https://github.com/openMF/mifos-mobile/pull/1981" >PR #1981: Fixes the white background in dark mode</a>
 <br>
 5. <a href="https://github.com/openMF/mifos-mobile/pull/1984" >PR #1984: Fixes the scrolling feature in landscape mode</a>
+<br>
+6. <a href="https://github.com/openMF/mifos-mobile/pull/2017" >PR #2017: Fixed the crashing of app when changing main mobile theme</a>
+<br>
+7. <a href="https://github.com/openMF/mifos-mobile/pull/1910" >PR #1910: Fixes App Crash when orientation is changed to landscape mode</a>
+<br>
+8. <a href="https://github.com/openMF/mifos-mobile/pull/1904" >PR #1904: Added Country Code Picker in the Signup form</a>
+<br><br><br>
 </ul>
 
 ### **Open Pull Requests**
 <ul>
-1. <a href="https://github.com/openMF/mifos-mobile/pull/1901" >PR #1901: Finger Print Authentication in the Passcode Activity</a>
+1. <a href="https://github.com/openMF/mifos-mobile/pull/2034" >PR #2034: Fingerprint Authentication in the Passcode Activity</a>
 <br>
 2. <a href="https://github.com/openMF/mifos-mobile/pull/1899" >PR #1899: Fixes App Crash if you click on the submit button without selecting product ID</a>
 <br>
@@ -430,22 +407,15 @@ Below are the links to my contributions :
 <br>
 4. <a href="https://github.com/openMF/mifos-mobile/pull/1912" >PR #1912: Fixes Scrolling in landscape mode</a>
 <br>
-5. <a href="https://github.com/openMF/mifos-mobile/pull/1910" >PR #1910: Fixes App Crash when orientation is changed to landscape mode</a>
+5. <a href="https://github.com/openMF/mifos-mobile/pull/1908" >PR #1908: Fixes duplication in Material Auto Complete Text View</a>
 <br>
-6. <a href="https://github.com/openMF/mifos-mobile/pull/1908" >PR #1908: Fixes duplication in Material Auto Complete Text View</a>
+6. <a href="https://github.com/openMF/mifos-mobile/pull/1905" >PR #1905: Allows User to enter the correct passcode even after three unsuccessful tries</a>
 <br>
-7. <a href="https://github.com/openMF/mifos-mobile/pull/1905" >PR #1905: Allows User to enter the correct passcode even after three unsuccessful tries</a>
+7. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
 <br>
-8. <a href="https://github.com/openMF/mifos-mobile/pull/1904" >PR #1904: Added Country Code Picker in the Signup form</a>
-<br>
-9. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
-<br>
-10. <a href="https://github.com/openMF/mifos-mobile/pull/2002" >PR #2002: Fixed the app to remember language set by the user before logging out</a>
-<br>
-11. <a href="https://github.com/openMF/mifos-mobile/pull/2017" >PR #2017: Fixed the crashing of app when changing main mobile theme</a>
+8. <a href="https://github.com/openMF/mifos-mobile/pull/2002" >PR #2002: Fixed the app to remember language set by the user before logging out</a>
 <br>
 </ul>
-<br><br><br><br><br><br>
 
 # **4. Week Wise Breakdown**
 
@@ -515,7 +485,7 @@ Below are the links to my contributions :
 
 ### *Week 11*
 
-- replace existing api layer 
+- Replace existing api layer with the guidance of the mentors  
 
 ### *Week 12*
 
@@ -558,7 +528,7 @@ I am pre final year student pursuing **Information Science and Engineering** at 
     - My studies have focused on Information Retrieval systems such as Search Engines,Cross Language Information Retrieval and digital libraries
     - Learning about the fundamentals of ML that included supervised and unsupervised learning,neural networks and deep learning
     - I have also had the privilege to learn about distributed systems, cloud computing, and virtualization technologies.
-<br><br><br><br><br>
+<br>
 
 # **7. Contact Information**
 **Name**: Pratyush Singh
@@ -625,12 +595,11 @@ I have been contributing to Open Souce for quite some time and here are some of 
 # **12. Experience with Angular/Java/Spring/Hibernate/MySQL/Android** 
 Yes, I do have experience with Android and Java and have built projects centered around them. I have decent knowledge of MySQL and SQLite Databases.I haven't particularly worked with AngularJS but I am familiar with JavaScript and I have also used React.js framework to build a
 <a href="https://github.com/PratyushSingh07/PathFindingVis/">Path finding visualizer</a>,So If needed I can learn AngularJS at a quick pace.
-<br>
+<br><br>
 
 # **13. Other Commitments**
-
 I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments.
-<br><br><br> 
+<br>
 
 # **14. What motivates me to work with Mifos for GSoC** 
 Mifos Initiative is making a significant difference in the world by providing financial inclusion to people who would otherwise be excluded from the formal financial system. This mission is truly inspiring, and being a part of it through the Google Summer of Code program is a privilege.
