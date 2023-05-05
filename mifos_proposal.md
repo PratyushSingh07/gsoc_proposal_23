@@ -21,6 +21,7 @@ Mentors:
 - [Ahmad Jawid Muhammadi](https://github.com/jawidMuhammadi) 
 - [Garvit Agarwal](https://github.com/garvit984)
 - [Saksham Handu](https://github.com/miPlodder)
+- <font color="#0000FF">Paras Dhama</font>
 
 <br><br><br><br><br><br><br><br>
 
@@ -61,7 +62,7 @@ Mentors:
 14.  [What motivates me to work with mifos](#14-what-motivates-me-to-work-with-mifos-for-gsoc)
 15.  [Previous Participation in GSoc](#15-previous-participation-in-gsoc)
 16.  [Application to multiple Orgs](#16-application-to-multiple-orgs)
-<br><br><br><br><br><br><br>
+<br><br><br><br><br>
 
 
 # **1. Project Idea**
@@ -80,18 +81,18 @@ Abstract
 
 ## **2.1 Replace API layer from self-service Fineract to Open Banking**
 - Replacing the API layer from self-service Fineract API to Open Banking API can provide significant benefits to financial institutions, including increased security, access to more financial data, improved customer experience, enhanced innovation, and compliance with regulatory requirements such as PSD2 and GDPR
-- I had gone through the [Open Banking App](https://github.com/openMF/open-banking-app) and found another project by the name of <font color="#dd4124">common</font> that was imported in this project. It contains <font color="#dd4124">Api.kt</font> file that has all the functions and constants related to network data sources for the Mifos Open Banking project. That file can be found [here](https://gist.github.com/PratyushSingh07/77a75b023a99140474b04f6c373dcbaf)
-- Using the functions defined in the above file, I can work my around the **Client APi** and the **Transaction API**. <font color="#dd4124">ClientApi</font> would provide a simple interface for making requests to the banking API, handling errors, and returning the parsed response data and the role of <font color="#dd4124">TransactionApi</font> would be providing methods for creating, fetching, and managing transactions. These two files can be found [here](https://gist.github.com/PratyushSingh07/71abfa10753be5c908ac38304adfb367)
+- I had gone through the [Open Banking App](https://github.com/openMF/open-banking-app) and found another project by the name of <font color="#dd4124">common</font> that was imported in this project. It contains an <font color="#dd4124">Api.kt</font> file that has all the functions and constants related to network data sources for the Mifos Open Banking project. That file can be found [here](https://gist.github.com/PratyushSingh07/77a75b023a99140474b04f6c373dcbaf)
+- Using the functions defined in the above file, I can work my way around the **Client APi** and the **Transaction API**. <font color="#dd4124">ClientApi</font> would provide a simple interface for making requests to the banking API, handling errors, and returning the parsed response data and the role of <font color="#dd4124">TransactionApi</font> would be providing methods for creating, fetching, and managing transactions. These two files can be found [here](https://gist.github.com/PratyushSingh07/71abfa10753be5c908ac38304adfb367)
 - I will also import <font color="#dd4124">common</font> in the mifos mobile project and use the <font color="#dd4124">App</font> object to use the functionalities of the imported project in the mifos mobile project.The App object can be found [here](https://gist.github.com/PratyushSingh07/937c3bc54f633f65a5be2d3bce33aabf)
 
 ## **2.2 Integration with Mojaloop via payment hub**
 - The Mifos Payment Hub can be used to connect to Mojaloop (payments switch) for inbound and outbound transactions by implementing Mojaloop API and mapping them to the Fineract API
 - To my understanding we will Install Mifos's Payment Hub on a server or cloud platform & then configure the Payment Hub to use the Mojaloop API as the payment gateway. We can then integrate the payment hub with our mobile using the available APIs that can be found [here](https://mifos.gitbook.io/docs/payment-hub-ee/overview/payment-hub-apis)
-- We can create a <font color="#dd4124">Fineract API manager</font> that can be used to create and manage instances of different Fineract API services and would hold constants for different API service URLs and creates a Retrofit instance to communicate with the API. Mobile wallet currently has this feature and the file would look something like [this](https://gist.github.com/PratyushSingh07/5aaeaba5f3fbe3db6ffc41a38ad64c3a)
-- To facilitate transaciton when initiating a payment, the client can create a new instance of the **Transaction class**, providing the necessary information such as the transacting entities and the amount to be transferred. This Transaction object can then be serialized and sent to the server to initiate the payment.Once the payment has been initiated, the server will respond with a **TransactionResponse object**, which contains details about the transaction such as the completed timestamp and transfer state.
+- We can create a <font color="#dd4124">Fineract API manager</font> that can be used to create and manage instances of different Fineract API services and would hold constants for different API service URLs and create a Retrofit instance to communicate with the API. Mobile wallet currently has this feature and the file would look something like [this](https://gist.github.com/PratyushSingh07/5aaeaba5f3fbe3db6ffc41a38ad64c3a)
+- To facilitate transaction when initiating a payment, the client can create a new instance of the **Transaction class**, providing the necessary information such as the transacting entities and the amount to be transferred. This Transaction object can then be serialized and sent to the server to initiate the payment.Once the payment has been initiated, the server will respond with a **TransactionResponse object**, which contains details about the transaction such as the completed timestamp and transfer state.
 - The client can then use the **TransactionInfo class** to query the server for additional information about the transaction, such as its status or any errors that may have occurred.Finally, **TransactingEntity class** is used to represent the parties involved in the payment transaction, such as the payee and payer. These objects can be created and attached to the Transaction object to provide the necessary information for the payment
-- Besides the above mentioned entites a few more entites such as *Amount* , *Identifier*, *IdentifierType*, *PartyIdentifiers* and *RegistrationEntity* will need to be implemented 
-- When a transaction is initiated, the parties involved will be identified using their **Identifier entity**, which is then added to the **PartyIdentifiers entity**. The initiating party's details will then added to the **Registration Entity**. Finally, the **Amount** entity will represent the amount of money being transferred 
+- Besides the above mentioned entities  a few more entities  such as *Amount* , *Identifier*, *IdentifierType*, *PartyIdentifiers* and *RegistrationEntity* will need to be implemented 
+- When a transaction is initiated, the parties involved will be identified using their **Identifier entity**, which is then added to the **PartyIdentifiers entity**. The initiating party's details will then be added to the **Registration Entity**. Finally, the **Amount** entity will represent the amount of money being transferred 
 - I have taken this [PR](https://github.com/openMF/mobile-wallet/pull/1009) as reference and the same can be used to implement this feature into the app 
 - For testing purposes,the integration can be tested in a sandbox environment to ensure it is working as expected
 
@@ -126,7 +127,7 @@ Abstract
 
 # **2.4 Basic Integration of Navigation Graph**
 - There aren't any navigation graphs in the project yet hence all navigation logic between different screens and activities are handled manually making the project more complex and error-prone code, which can slow down the app and make it more difficult to maintain.As the app grows in complexity, it can become increasingly difficult to manage the navigation logic manually. This can make it challenging to add new features or modify existing ones, which can limit the app's ability to scale and evolve over time.
-- With navigation graph in place can improve user experience by allowing users to easily navigate between screens and tasks .Besides it provides a simplified and standardized approach to app navigation, making it easier for developers to build and maintain complex apps. It also helps to reduce the amount of code required to handle navigation, which can save development time and effort.
+- With a navigation graph in place can improve user experience by allowing users to easily navigate between screens and tasks .Besides it provides a simplified and standardized approach to app navigation, making it easier for developers to build and maintain complex apps. It also helps to reduce the amount of code required to handle navigation, which can save development time and effort.
 - The **Navigation Component** in Android provides a framework for implementing navigation between screens in an application. It uses a Navigation Graph, which is an XML file that defines the navigation paths and destinations in an app.The first step in integrating the Navigation Graph is to create the graph file and define the navigation paths and destinations. This can be done using Android Studio's Navigation Editor, which provides a visual interface for designing the graph.
 - Once the Navigation Graph is created, the next step is to integrate it into the app's code. This involves using the Navigation Component APIs to load and navigate to the appropriate destination based on user input.
 - As an example , I have taken up **SettingsFragment** and **UpdatePasswordFragment** . To implement a navigation graph I have added these two files in the xml and defined an action from SettingsFragment to the UpdatePasswordFragment.Having done this, I added a **FragmentContainerView** in the SettingsActivity that will act as my NavHost.
@@ -160,13 +161,13 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
         return super.onPreferenceTreeClick(preference)
     }
 ```
-- I have taken this just to show it as demo and I can add a few more navigation graphs that would make the app further scalable. For instance , currently we have a **LoginActivity** and a **RegistrationActivity** .But the role of the **RegistrationActivity** is just to replace the fragment which is **RegistrationFragment**. We can get rid of the two activities and replace them by just one activity let's call it **AuthenticationActivity** and convert the **LoginActivity** to a fragment.
+- I have taken this just to show it as a demo and I can add a few more navigation graphs that would make the app further scalable. For instance , currently we have a **LoginActivity** and a **RegistrationActivity** .But the role of the **RegistrationActivity** is just to replace the fragment which is **RegistrationFragment**. We can get rid of the two activities and replace them by just one activity, let's call it **AuthenticationActivity** and convert the **LoginActivity** to a fragment.
 - So now you will have just one Activity and on top of that you will have two fragments that can be added in another navigation graph.
 <br>
 
 # **2.5 Migration from Dagger to Hilt**
 - We will start off with a <font color="green"> @Singleton</font> component and then later migrate activities and fragments
-- I propose we migrate the Login and Registeration first and then move towards inner fragments and during the migration I'll remove all   <font color="green">@Component</font> and  <font color="green">@Subcomponent</font> interfaces and annotate all modules with  <font color="green">@InstallIn</font>.
+- I propose we migrate the Login and Registration first and then move towards inner fragments and during the migration I'll remove all   <font color="green">@Component</font> and  <font color="green">@Subcomponent</font> interfaces and annotate all modules with  <font color="green">@InstallIn</font>.
 - After the migration, all Application/Activity/Fragment/View classes will be annotated with  <font color="green">@AndroidEntryPoint</font> and any code instantiating or propagating components shall be removed.
 
      ![Injection Flow](InjectionFlow.jpg)
@@ -177,7 +178,7 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 - Keeping in mind that we will be migrating to MVVM ,our **Repository layer** would use coroutines to run long running code off the main thread
 - We can use Hilt to inject dispatchers thus making it easier to test our code and also we can ensure that our code is thread-safe and that we are using the appropriate dispatcher for each task.Therefore, I believe that using Hilt to inject dispatchers in repositories is an important aspect of our project's architecture, and I plan to incorporate it into our MVVM architecture.
 - Moreover, we could use **Flow** to compose and coordinate multiple related operations; each of which in-turn call multiple coroutines
-**ViewModel** calls this code confining the scope to its *viewModelScope* so that when this ViewModel is cleared; all running operations in this scope are cancelled. We then use **LiveData** to communicate the result to the View layer.Finally View’s will call these method’s from ViewModel
+**ViewModel** calls this code confining the scope to its *viewModelScope* so that when this ViewModel is cleared; all running operations in this scope are canceled. We then use **LiveData** to communicate the result to the View layer.Finally View’s will call these method’s from ViewModel
 - Thus, using coroutines and viewModelScope allows for asynchronous operations to be run off the main thread, thus preventing the UI from freezing or becoming unresponsive during long-running tasks and use of viewModelScope ensures that all running operations in the ViewModel are cancelled when the ViewModel is cleared, preventing potential memory leaks and ensuring efficient use of system resources.
 
   ![MVVM+Coroutine](MVVM+Flow+Coroutine.jpg)
@@ -202,7 +203,7 @@ override fun onPreferenceTreeClick(preference: Preference): Boolean {
 <br>
 
 # **2.9 Improving Github Workflows** 
-- Currently the workflows do not have any jobs that runs the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
+- Currently the workflows do not have any jobs that run the Unit tests or the UI tests. Hence modifications in the workflow to allow both tests to run will be a good feature to have.By running unit tests and UI tests as part of our Github workflow, we can get early feedback on code changes and catch issues before they are merged into the main branch. This can help prevent bugs from being introduced into the production code.
 - It can provide a faster feedback loop for developers and can help them iterate and develop features more quickly.By automating testing as part of your Github workflow, you can reduce the need for manual testing. This can save time and resources and allow developers to focus on other tasks.
 - Job for Unit test would be :
 ```yml
@@ -260,9 +261,9 @@ Job for UI tests would be :
 
 # **2.10 Integration of Jetpack Compose**
 - Currently the app is using XML layouts that can lead to overhead in terms of memory usage and application performance, as they need to be inflated at runtime, which can slow down the application.Even the errors are manifested at runtime making it cumbersome to track down the root cause
-- With jetpack compose we can have a  a more modular approach to UI development, which makes the code easier to maintain as it will allow us to break down UI into smaller, reusable components that can be tested and maintained independently. This can help reduce code complexity and improve code readability, making it easier to make changes to the UI without affecting the rest of the codebase
+- With jetpack compose we can have a more modular approach to UI development, which makes the code easier to maintain as it will allow us to break down the UI into smaller, reusable components that can be tested and maintained independently. This can help reduce code complexity and improve code readability, making it easier to make changes to the UI without affecting the rest of the codebase
 - We will also be migrating our project to MVVM and compose integrates well with **ViewModel** and **Live Data** which will make our app robust and scalable. Furthermore, we are also adding navigation graphs in our project and compose provides its own version of the Navigation component called **Navigation Compose** that allows to navigate between composables and screens.This can be implemented at a basic level and scaled further 
-- Since we are aiming for a basic integration of jetpack we can start off with **LoginActivity** followed by **RegistrationFragment** .This should then be followed by those activties/fragments that handles lesser data such as **About Us** page in the settings
+- Since we are aiming for a basic integration of jetpack we can start off with **LoginActivity** followed by **RegistrationFragment** .This should then be followed by those activities/fragments that handles lesser data such as **About Us** page in the settings
 - We need to add dependency in <font color="red">build.gradle</font> to start using jetpack compose
 ```js
 implementation("androidx.activity:activity-compose:1.3.0-alpha07")
@@ -273,15 +274,16 @@ composeOptions {
         kotlinCompilerExtensionVersion = "1.4.0-alpha01"
     }
 ```
-- After setting up the pre-requisities we can start off by adding  <font color="green">@Composable</font> functions in the kotlin file and adding the neccessary views
+- After setting up the prerequisities we can start off by adding  <font color="green">@Composable</font> functions in the kotlin file and adding the necessary views
+- Jetpack Compose provides a testable **UI toolkit** that simplifies the process of writing UI tests. This is achieved by designing the UI code in a manner that enables a clear separation of concerns between the UI and business logic. This separation allows for easier testing of each component separately, improving the overall testability and maintainability of the codebase.
 <br>
 
 # **2.11 My Ideas for the app**
 These are the stretch goals for the project and would be considered only when we will be done with the main idea list
 ## **2.11.1 Use Fineract SDK**
 - We have a Fineract SDK which can be imported in our project as well . This will allow us to reduce the boiler plate code by reducing the number of server calls from within our project 
-- This will allow our app to be light weight and  will provide a better experience to our users
-<br>
+- This will allow our app to be lightweight and  will provide a better experience to our users
+<br><br>
 
 ## **2.11.2 Migrating from Butter Knife to Data Binding** 
 - As the Android Development scene continues to grow, new build tools are created in order to address issues developers had seen using previous solutions. A commonly used tool was Butterknife. At the time, Butterknife was used to reduce the the amount of times the findViewById(...) function had been used in order to reference a view in our application. However, Butterknife still had its own issues such as null safety and speed.
@@ -296,10 +298,10 @@ These are the stretch goals for the project and would be considered only when we
 - Currently when you go to **Settings** and then click on **Update Endpoint** and try to change the endpoint they user is sent back to the LoginActivity. And now the user cannot log in back because of the updated endpoint which might be incorrect.The user would then have to uninstall the app and then install it again just to gain access of the system
 - To overcome this there should be a support in the LoginActivity to change the **Connection Settings** that would allow the user to change the endpoint without having to uninstall the app. This would save the users time and would be a good feature to have
 - The implementation idea can be derived from **Android Client** that presently has this feature and the same can be replicated over in mifos mobile. [Here](https://user-images.githubusercontent.com/90026952/224733546-0cc1c646-fa88-4fa6-9de3-571737fb050d.mp4) is a video for your reference
-<br><br><br><br><br><br><br><br><br>
+<br><br><br>
 
 # **3. Contributions to Mifos**
-Below are the links to my contributions : 
+Below are the links to my contributions at the time of submitting this proposal : 
 ### **Merged Pull Requests** 
 <ul>
 1. <a href="https://github.com/openMF/mifos-mobile/pull/1926" >PR #1926: Modified Error message in case of wrong endpoint</a>
@@ -331,7 +333,7 @@ Below are the links to my contributions :
 <br>
 4. <a href="https://github.com/openMF/mifos-mobile/pull/1908" >PR #1908: Fixes duplication in Material Auto Complete Text View</a>
 <br>
-5. <a href="https://github.com/openMF/mifos-mobile/pull/1905" >PR #1905: Allows User to enter the correct passcode even after three unsuccessful tries</a>
+5. <a href="https://github.com/openMF/mifos-mobile/pull/2049" >PR #2049: Allows User to enter the correct passcode even after three unsuccessful tries</a>
 <br>
 6. <a href="https://github.com/openMF/mifos-mobile/pull/1938" >PR #1938: Offline Support in the home fragment</a>
 <br>
@@ -339,8 +341,10 @@ Below are the links to my contributions :
 <br>
 </ul>
 
+- I intend to continue contributing to the codebase even after submitting my proposal and expect that there may be changes made to the Pull Requests that I have opened. Therefore, I am providing the links to those PRs [here](https://github.com/openMF/mifos-mobile/pulls/PratyushSingh07)
+
 ### **Issues Reported**
-- I had opened quite a few issues that mainly focused on bugs that were present in the codebase and also on the features that were absent from the mifos mobile at the time . Some of them are still open and have PRs either by me or from my fellow contributors 
+- I had opened a total of **15 issues** that mainly focused on bugs that were present in the codebase and also on the features that were absent from the mifos mobile at the time . Some of them are still open and have PRs either by me or from my fellow contributors 
 - All of my open and closed issues can be accessed from [here](https://github.com/openMF/mifos-mobile/issues/created_by/PratyushSingh07) 
 
 # **4. Week Wise Breakdown**
@@ -350,17 +354,17 @@ Below are the links to my contributions :
 ### *Week 1*
 - Get in touch with the developers and the mentor
 - Introduction to the community, to the mentor and fix timings to communicate
-- Discuss any suggestions and changes to the project. There could modifications, new additions or ammendments; it would be better to go over these early 
+- Discuss any suggestions and changes to the project. There could modifications, new additions or amendments; it would be better to go over these early 
 
 ### *Week 2*
-- Go Thorugh Mifos-Mobile codebase 
+- Go Through Mifos-Mobile codebase 
 - Take reference from android client and try to implement features that are currently absent in mifos-mobile
 - Go through the Open Banking API and related documentations 
 
 ### *Week 3*
 - Discuss the working of the existing application with the mentor. Discuss the implementations of the new features
 - Go over the new design in detail and ask for changes and suggestions
-- Discuss the changes that need to take place in the frontend to accomodate for the breaking changes
+- Discuss the changes that need to take place in the frontend to accommodate  for the breaking changes
 
 ## **4.2 Phase 1 (29 May - 9 July)**
 
@@ -381,7 +385,7 @@ Below are the links to my contributions :
 
 - I would dedicate this week to the implementation of the Navigation graph
 - I would start off by grouping the fragments that are connected in a sequential flow and map out a graph for the same in the xml
-- This would require the addition of FragmentContainerView in certain activities which will allow further FragmentTransaction operations on the FragmentContainerView and providing a consistent timing for lifecycle events.
+- This would require the addition of FragmentContainerView in certain activities which will allow further FragmentTransaction operations on the FragmentContainerView and provide a consistent timing for lifecycle events.
 
 ### *Week 6*
 
@@ -391,8 +395,9 @@ Below are the links to my contributions :
 
 ### *Week 7*
 
-- Replace existing api layer with the guidance of the mentors  
-
+- In this, week I will replace existing api layer from self service fineract to Open Banking
+- We can take reference from the [Open Banking App](https://github.com/openMF/open-banking-app) while implementing it in our project 
+- I will be communicating with the mentors and taking their valuable inputs especially when dealing with the endpoints that we have to hit  
 
 ### *Week 8 and Rest of Phase 1*
 
@@ -412,7 +417,7 @@ Below are the links to my contributions :
 
 ### *Week 11*
 
-- I will dedicate this week for the integratation of mojaloop via the payment hub. Currently Mobile wallet already has this feature and the same can be taken as a reference while implementing it in mifos mobile
+- I will dedicate this week for the integration of mojaloop via the payment hub. Currently Mobile wallet already has this feature and the same can be taken as a reference while implementing it in mifos mobile
 - I will consult with my mentor the API endpoints that needs to be hit for transactions, registrations, identification and so on
 
 ### *Week 12*
@@ -454,11 +459,9 @@ Hackathons.I am quite conversant with Android Architectural Components, MVVM, ac
 I am pre final year student pursuing **Information Science and Engineering** at Dayananda Sagar College of Engineering.
 - Over the course my area of study have included :
     - Learning the fundamentals of Java, Python and C++ along with Data Structures and Computer Architecture
-    - I have learnt to collect,store and analyze data using tools like SQL and Python
-    - My studies have focused on Information Retrieval systems such as Search Engines,Cross Language Information Retrieval and digital libraries
+    - Collecting, Storing and Analyzing data using tools like SQL and Python
     - Learning about the fundamentals of ML that included supervised and unsupervised learning,neural networks and deep learning
-    - I have also had the privilege to learn about distributed systems, cloud computing, and virtualization technologies.
-<br><br><br>
+    - Learning about distributed systems, cloud computing, and virtualization technologies.
 
 # **7. Contact Information**
 **Name**: Pratyush Singh
@@ -480,13 +483,13 @@ I am pre final year student pursuing **Information Science and Engineering** at 
 As an android developer my first and foremost goal is to master the Android SDK,Multithreading and other related technologies and create a portfolio of projects that would include personal projects, open source contributions, or projects done as part of my studies or work.
 As I gain more experience , I would want to specialize in UI/UX design along with enterprise app development and seek out for leadership roles. 
 I would sooner or later venture into AOSP and get a grasp of low level android as well and transition into a full stack mobile developer.
-I am self taught like many other developers out there and Open Source Projects have played an integral part in my growth and thus I would give back to this android community by sharing my knowledge and expertise through blog posts, tutorials,speaking engagements and ofcourse by contributing to Open Source Projects.
+I am self taught like many other developers out there and Open Source Projects have played an integral part in my growth and thus I would give back to this android community by sharing my knowledge and expertise through blog posts, tutorials,speaking engagements and of course by contributing to Open Source Projects.
 <!-- <br><br><br> -->
 
 # **9. My Projects**
 <b>1. Cyclofit : </b><a href="https://github.com/PratyushSingh07/cyclofit"><i>Source Code</i></a><br>
 - Cyclofit is a safety and health monitoring system for cyclists
-- It tracks the heart rate,calories burnt, distance coverered and much more using the sensors integrated in a single
+- It tracks the heart rate,calories burnt, distance covered and much more using the sensors integrated in a single
 device.Our device has a proximity sensor that can track any incoming vehicle by monitoring it’s rate of change of speed.
 The data such as the heart rate are displayed into the app through an api
 - Worked with firestore , firebase , Coroutines created a community section in this app that implements a real time
@@ -506,7 +509,7 @@ Yes, I have visited all of mifos's gitter channel and my id was <a href="(@praty
 <!-- <br><br><br> -->
 
 # **11. Other Open Source Contributions** 
-I have been contributing to Open Souce for quite some time and here are some of my contributions:
+I have been contributing to Open Source for quite some time and here are some of my contributions:
 <br>
 
 1. Dare2Change : 
@@ -516,11 +519,11 @@ I have been contributing to Open Souce for quite some time and here are some of 
 2. Anki-Android : 
     - There were certain  <font color="green">@KotlinCleanup</font> annotations in the codebase with messages such as *make data not null* and *simplify through scope functions*
     - I opened a few pull requests adhering to above mentioned messages
-    - My contributions to Anki-Android : [check here](https://github.com/ankidroid/Anki-Android/pulls?q=is%3Apr+author%3A%40me+is%3Aclosed)
+    - My contributions to Anki-Android : [check here](https://github.com/ankidroid/Anki-Android/pulls?q=is%3Apr+author%3APratyushSingh07+is%3Aclosed+)
 3. Catroid : 
     - It is written predominantly in JAVA and hence refactoring the existing codebase to Kotlin is a vital task
     - I refactored certain files to kotlin 
-    - My contributions for Catroid: [check here](https://github.com/Catrobat/Catroid/pulls/@me)
+    - My contributions for Catroid: [check here](https://github.com/Catrobat/Catroid/pulls/PratyushSingh07)
 
 # **12. Experience with Angular/Java/Spring/Hibernate/MySQL/Android** 
 Yes, I do have experience with Android and Java and have built projects centered around them. I have decent knowledge of MySQL and SQLite Databases.I have built a full stack application during the course of my internship by using Angular as the frontend and Spring Boot for developing RESTful APIs.
@@ -528,7 +531,7 @@ Yes, I do have experience with Android and Java and have built projects centered
 
 # **13. Other Commitments**
 I am fully committed to enhancing the Mifos mobile platform during the upcoming summer as I do not have any other conflicting commitments.
-<br><br><br><br>
+<br><br>
 
 # **14. What motivates me to work with Mifos for GSoC** 
 Mifos Initiative is making a significant difference in the world by providing financial inclusion to people who would otherwise be excluded from the formal financial system. This mission is truly inspiring, and being a part of it through the Google Summer of Code program is a privilege.
