@@ -19,6 +19,7 @@
     - [Xml to compose view](#xml-to-compose-view)
     - [Project Upgradation](#project-upgradation)
     - [Improving Github Actions](#improving-github-actions)
+    - [Project Cleanup](#project-cleanup)
 - [Impact](#impact)
 - [What more can be done?](#what-more-can-be-done)
 - [Conclusion](#conclusion)
@@ -156,7 +157,9 @@ Turbine predominantly helps us to test the stateflows that we have used in our v
 </table>
 </center>
 
-- Second & Fourth image is what we want to come up with whereas first and third were the xml designs. 
+- Second & Fourth image is what we want to come up with whereas first and third were the xml designs. We were successful in implmenting them during the final days of GSoC and this [Pull Request](https://github.com/openMF/mifos-mobile/pull/2302) should be taken as a reference by the future contributors. 
+
+- We plan to put everything compose related into the `core` module and this paves the way for further modularization. Such modularizatoin would allow for easily scalibility in the near future.
 
 ### *Project Upgradation*
 - Mifos Mobile was earlier running on kotlin version `1.6.21` and it was also using deprecated `kotlin-android-extension`. I have now upgraded the project to `1.8.10` and also removed the deprecated version in favour of viewbinding. Moreover, this upgradation ensured that our module created for compose compiles successfully. 
@@ -234,6 +237,13 @@ jobs:
           days-before-issue-stale: 90
           days-before-pr-stale: 14
 ```
+
+### *Project Cleanup*
+- Having upgraded the project by applying the latest MAD tools we were left with many obsolete files in our project and removing them advocated for improved clarity and organization. 
+
+- This [Pull Request](https://github.com/openMF/mifos-mobile/pull/2281) was raised to clean up dagger dependencies and also to remove viewmodel factories that were created when our project was using dagger2.
+
+- Having migrated the project from MVP to MVVM we no longer needed the presenters & their corresponding test files and hence we got rid of them while we were transitioning. Similarly, having migrated from xml to compose we no longer needed the `fragment_about_us.xml` in our project. 
 
 ## **Impact**
 - The transformation of Mifos mobile project from MVP to MVVM architecture marks a significant stride in refining code structure and organization. This shift not only promotes a clearer separation of responsibilities but also sets the stage for more modular and maintainable development. The introduction of unit tests for repositories and view models contributes to heightened code quality, instilling confidence in the functionality and mitigating the risk of regressions down the line.
